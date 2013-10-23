@@ -29,11 +29,13 @@ module.exports = Doors;
  * @api public
  */
 
-function Doors(name) {
+function Doors(name, locks) {
 	this.name = name;
 	this.keys = [];
   this.locks = {};
-
+  // for(var l = locks.length; l--;) {
+  // 	this.add(locks[l]);
+  // }
 }
 
 

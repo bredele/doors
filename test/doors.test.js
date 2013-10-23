@@ -12,6 +12,12 @@ describe('Constructor', function(){
     var door = new Doors('bredele');
     assert(door.name === 'bredele');
   });
+
+  it('should initialize a door with a name and an array of locks', function() {
+    var door = new Doors('bredele', ['olivier', 'amy']);
+    assert(contains(door.keys, 'olivier') === true);
+    assert(contains(door.keys, 'amy') === true);
+  });
 });
 
 
