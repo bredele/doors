@@ -30,6 +30,14 @@ describe("Add lock", function() {
   
 });
 
+describe('has locked lock', function(){
+  it("returns true if door contains locked lock", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    assert(door.has('olivier') === true);
+  });
+});
+
 describe("Unlock", function() {
   var door = null;
   beforeEach(function() {

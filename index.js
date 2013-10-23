@@ -1,5 +1,20 @@
 var Emitter = require('emitter'),
 		index = require('indexof');
+		// normalize = function(fn, arr) {
+		// 	return function() {
+		// 		var curry = function curry() {
+		// 			var length = arguments.length;
+		// 			if(length) {
+		// 				for(var l = length; l--;) {
+		// 					fn.call(this, arguments[l]);
+		// 				}
+		// 			} else {
+		// 				curry.call(this, arr);
+		// 			}
+		// 		};
+		// 		return curry;
+		// 	};
+		// };
 
 
 /**
@@ -111,7 +126,6 @@ Doors.prototype.unlock = function() {
 		for(var l = length; l--;) {
 			var key = arguments[l];
 			if(this.has(key)) this.keys.splice(index(this.keys, key), 1);
-			//delete this.locks[key];
 			this.open();
 		}
 	} else {
