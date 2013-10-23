@@ -123,10 +123,11 @@ Doors.prototype.unlock = function() {
 
 
 /**
- * [toggle description]
- * @param  {[type]} name [description]
- * @param  {[type]} bool [description]
- * @return {[type]}      [description]
+ * Toggle Lock.
+ * 
+ * @param  {String} name 
+ * @param  {Boolean} bool 
+ * @api public
  */
 
 Doors.prototype.toggle = function(name, bool) {
