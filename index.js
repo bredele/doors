@@ -97,23 +97,6 @@ Doors.prototype.lock = function() {
 
 
 /**
- * Open the door only if all locks are unlocked.
- * and emit open event.
- * 
- * @return {Boolean} true if open
- * @api public
- */
-
-Doors.prototype.open = function() {
-	if(!this.keys.length) {
-		this.emit('open');
-		return true;
-	}
-	return false;
-};
-
-
-/**
  * Unlock door's lock(s).
  * Examples:
  *
@@ -138,3 +121,35 @@ Doors.prototype.unlock = function() {
 	}
 };
 
+
+/**
+ * [toggle description]
+ * @param  {[type]} name [description]
+ * @param  {[type]} bool [description]
+ * @return {[type]}      [description]
+ */
+
+Doors.prototype.toggle = function(name, bool) {
+	if(bool) {
+		this.unlock(name);
+	} else {
+		this.lock(name);
+	}
+};
+
+
+/**
+ * Open the door only if all locks are unlocked.
+ * and emit open event.
+ * 
+ * @return {Boolean} true if open
+ * @api public
+ */
+
+Doors.prototype.open = function() {
+	if(!this.keys.length) {
+		this.emit('open');
+		return true;
+	}
+	return false;
+};

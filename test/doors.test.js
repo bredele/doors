@@ -14,6 +14,7 @@ describe('Constructor', function(){
   });
 });
 
+
 describe("Add lock", function() {
   it("should add lock which is locked by default", function() {
     var door = new Doors('bredele');
@@ -30,6 +31,7 @@ describe("Add lock", function() {
   
 });
 
+
 describe('has locked lock', function(){
   it("returns true if door contains locked lock", function() {
     var door = new Doors('bredele');
@@ -37,6 +39,7 @@ describe('has locked lock', function(){
     assert(door.has('olivier') === true);
   });
 });
+
 
 describe("Unlock", function() {
   var door = null;
@@ -83,6 +86,7 @@ describe("Unlock", function() {
 
 });
 
+
 describe("Lock", function() {
   var door = null;
   beforeEach(function() {
@@ -119,6 +123,24 @@ describe("Lock", function() {
   });
 });
 
+
+describe("Toggle Lock", function() {
+  it("unlocks if second argument if truthy", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    door.toggle('olivier', true);
+    assert(contains(door.keys, 'olivier') === false);
+  });
+  it("locks if second argument if falsy", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    door.unlock('olivier');
+    door.toggle('olivier', false);
+    assert(contains(door.keys, 'olivier') === true);
+  });
+});
+
+
 describe("Open", function() {
   it("returns true if door is open", function() {
     var door = new Doors('bredele');
@@ -127,6 +149,4 @@ describe("Open", function() {
     door.unlock('olivier');
     assert(door.open() === true);
   });
-
-
 });
