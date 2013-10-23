@@ -1,20 +1,5 @@
 var Emitter = require('emitter'),
 		index = require('indexof');
-		// normalize = function(fn, arr) {
-		// 	return function() {
-		// 		var curry = function curry() {
-		// 			var length = arguments.length;
-		// 			if(length) {
-		// 				for(var l = length; l--;) {
-		// 					fn.call(this, arguments[l]);
-		// 				}
-		// 			} else {
-		// 				curry.call(this, arr);
-		// 			}
-		// 		};
-		// 		return curry;
-		// 	};
-		// };
 
 
 /**
@@ -35,7 +20,7 @@ function Doors(name, locks) {
 	this.keys = [];
   this.locks = {};
   for(var l = arr.length; l--;) {
-  	this.add(arr[l]);
+    this.add(arr[l]);
   }
 }
 
@@ -67,8 +52,12 @@ Doors.prototype.has = function(key) {
 
 Doors.prototype.add = function(lock) {
 	if(!this.has(lock)) {
-		this.locks[lock] = lock;
-		this.keys.push(lock);
+		var key = lock;
+		if(lock instanceof Doors) {
+			key = lock.name;
+		}
+		this.locks[key] = lock;
+		this.keys.push(key);
 	}
 };
 

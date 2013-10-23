@@ -156,3 +156,18 @@ describe("Open", function() {
     assert(door.open() === true);
   });
 });
+
+
+describe("Door inception", function() {
+  var door = null;
+  beforeEach(function() {
+    door = new Doors('bredele');
+  });
+
+  it("should add a door", function() {
+    var lock = new Doors('github');
+    door.add(lock);
+    assert(door.has('github') === true);
+  });
+  
+});
