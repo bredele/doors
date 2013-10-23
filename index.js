@@ -47,7 +47,9 @@ Doors.prototype.add = function(lock) {
  */
 
 Doors.prototype.lock = function(name) {
-	
+	if(this.locks[name] && !~index(this.keys, name)) {
+		this.keys.push(name);
+	}
 };
 
 
@@ -71,7 +73,7 @@ Doors.prototype.open = function() {
  *     door.unlock('olivier', 'amy'); //unlock 'olivier' and 'amy'
  *     door.unlock(); //unlock all the locks
  *
- * @param {String} html string to be escaped
+ * @params {String} key(s)
  * @api public
  */
 
@@ -80,8 +82,9 @@ Doors.prototype.unlock = function() {
 	if(length) {
 		for(var l = arguments.length; l--;) {
 			var key = arguments[l];
-			this.keys.splice(index(this.keys, key), 1);
-			delete this.locks[key];
+			var idx = index(this.keys, key);
+			if(!!~idx) this.keys.splice(idx, 1);
+			//delete this.locks[key];
 			this.open();
 		}
 	} else {

@@ -3,9 +3,9 @@ var Doors = require('doors');
 var assert = require('assert');
 var contains = require('contains');
 var count = require('count');
-
-
-
+var has = function(obj, key) {
+  return !!obj[key];
+};
 
 describe('Constructor', function(){
   it("should initalize a door with a name", function() {
@@ -15,7 +15,7 @@ describe('Constructor', function(){
 });
 
 describe("Add lock", function() {
-  it("should add lock", function() {
+  it("should add lock which is locked by default", function() {
     var door = new Doors('bredele');
     door.add('olivier');
     assert(contains(door.keys, 'olivier') === true);
@@ -66,15 +66,30 @@ describe("Unlock", function() {
     assert(isOpen === true);
   });
 
+  it('should not unlock an unknown lock', function() {
+    door.add('amy');
+    door.unlock('bruno');
+    assert(contains(door.keys, 'olivier') === true);
+    assert(contains(door.keys, 'amy') === true);
+  });
+
 });
 
 describe("Lock", function() {
-  it("should lock a lock previously unlocked", function() {
-    var door = new Doors('bredele');
+  var door = null;
+  beforeEach(function() {
+    door = new Doors('bredele');
     door.add('olivier');
+  });
+
+  it("should lock a lock previously added", function() {
+    assert(contains(door.keys, 'olivier') === true);
+  });
+
+  it('should lock a lock previously unlocked', function() {
     door.unlock('olivier');
-
-
     assert(contains(door.keys, 'olivier') === false);
+    door.lock('olivier');
+    assert(contains(door.keys, 'olivier') === true);
   });
 });
