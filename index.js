@@ -30,12 +30,13 @@ module.exports = Doors;
  */
 
 function Doors(name, locks) {
+	var arr = locks || [];
 	this.name = name;
 	this.keys = [];
   this.locks = {};
-  // for(var l = locks.length; l--;) {
-  // 	this.add(locks[l]);
-  // }
+  for(var l = arr.length; l--;) {
+  	this.add(arr[l]);
+  }
 }
 
 
