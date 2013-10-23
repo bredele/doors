@@ -29,3 +29,12 @@ describe("Add lock", function() {
   });
   
 });
+
+describe("Unlock", function() {
+  it("should unlock a lock previously added", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    door.unlock('olivier');
+    assert(contains(door.locks, 'olivier') === false);
+  });
+});

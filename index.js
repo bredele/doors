@@ -25,8 +25,10 @@ Emitter(Doors.prototype);
 
 
 /**
- * [lock description]
- * @return {[type]} [description]
+ * Add lock.
+ *
+ * @param {String} name 
+ * @api public
  */
 
 Doors.prototype.add = function(name) {
@@ -52,5 +54,7 @@ Doors.prototype.lock = function(name) {
  */
 
 Doors.prototype.unlock = function(name) {
-	
+	var idx = index(this.locks, name);
+	this.locks.splice(idx, 1);
 };
+
