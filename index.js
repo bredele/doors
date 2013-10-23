@@ -72,7 +72,12 @@ Doors.prototype.add = function(lock) {
 
 /**
  * Lock a previously added lock.
- * 
+ * Examples:
+ *
+ *     door.lock('olivier'); //lock 'olivier'
+ *     door.lock('olivier', 'amy'); //lock 'olivier' and 'amy'
+ *     door.lock(); //lock all the locks
+ *
  * @api public
  */
 
