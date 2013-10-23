@@ -80,9 +80,9 @@ Doors.prototype.unlock = function() {
 	if(length) {
 		for(var l = arguments.length; l--;) {
 			var key = arguments[l];
-			var idx = index(this.keys, key);
-			this.keys.splice(idx, 1);
+			this.keys.splice(index(this.keys, key), 1);
 			delete this.locks[key];
+			this.open();
 		}
 	} else {
 		this.unlock.apply(this, this.keys);
