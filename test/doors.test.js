@@ -80,6 +80,7 @@ describe("Lock", function() {
   beforeEach(function() {
     door = new Doors('bredele');
     door.add('olivier');
+    door.add('amy');
   });
 
   it("should lock a lock previously added", function() {
@@ -91,6 +92,22 @@ describe("Lock", function() {
     assert(contains(door.keys, 'olivier') === false);
     door.lock('olivier');
     assert(contains(door.keys, 'olivier') === true);
+  });
+
+  it('should lock multiple locks', function() {
+    door.unlock('olivier');
+    door.unlock('amy');
+    door.lock('olivier', 'amy');
+    assert(contains(door.keys, 'olivier') === true);
+    assert(contains(door.keys, 'amy') === true);
+  });
+
+  it('should lock the entire door if no arguments', function() {
+    door.unlock('olivier');
+    door.unlock('amy');
+    door.lock();
+    assert(contains(door.keys, 'olivier') === true);
+    assert(contains(door.keys, 'amy') === true);
   });
 });
 

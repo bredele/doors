@@ -1,6 +1,7 @@
 var Emitter = require('emitter'),
 		index = require('indexof');
 
+
 /**
  * Expose 'Doors'
  */
@@ -27,6 +28,19 @@ Emitter(Doors.prototype);
 
 
 /**
+ * Has key.
+ *
+ * @param {String} key 
+ * @return {Boolean} true if key is locked
+ * @api public
+ */
+
+Doors.prototype.has = function(key) {
+	return !!~index(this.keys, key);
+};
+
+
+/**
  * Add lock.
  *
  * @param {String} name 
@@ -34,7 +48,7 @@ Emitter(Doors.prototype);
  */
 
 Doors.prototype.add = function(lock) {
-	if(!~index(this.keys, lock)) {
+	if(!this.has(lock)) {
 		this.locks[lock] = lock;
 		this.keys.push(lock);
 	}
@@ -42,13 +56,22 @@ Doors.prototype.add = function(lock) {
 
 
 /**
- * [lock description]
- * @return {[type]} [description]
+ * Lock a previously added lock.
+ * 
+ * @api public
  */
 
-Doors.prototype.lock = function(name) {
-	if(this.locks[name] && !~index(this.keys, name)) {
-		this.keys.push(name);
+Doors.prototype.lock = function() {
+	var length = arguments.length;
+	if(length) {
+		for(var l = length; l--;) {
+			var key = arguments[l];
+			if(this.locks[key] && !this.has(key)) {
+				this.keys.push(key);
+			}
+		}
+	} else {
+		this.lock.apply(this, Object.keys(this.locks));
 	}
 };
 
@@ -85,10 +108,9 @@ Doors.prototype.open = function() {
 Doors.prototype.unlock = function() {
 	var length = arguments.length;
 	if(length) {
-		for(var l = arguments.length; l--;) {
+		for(var l = length; l--;) {
 			var key = arguments[l];
-			var idx = index(this.keys, key);
-			if(!!~idx) this.keys.splice(idx, 1);
+			if(this.has(key)) this.keys.splice(index(this.keys, key), 1);
 			//delete this.locks[key];
 			this.open();
 		}
