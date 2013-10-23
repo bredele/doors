@@ -18,14 +18,14 @@ describe("Add lock", function() {
   it("should add lock", function() {
     var door = new Doors('bredele');
     door.add('olivier');
-    assert(contains(door.locks, 'olivier') === true);
+    assert(contains(door.keys, 'olivier') === true);
   });
   
   it("should not add a lock twice", function() {
     var door = new Doors('bredele');
     door.add('olivier');
     door.add('olivier');
-    assert(count(door.locks, 'olivier') === 1);
+    assert(count(door.keys, 'olivier') === 1);
   });
   
 });
@@ -35,6 +35,17 @@ describe("Unlock", function() {
     var door = new Doors('bredele');
     door.add('olivier');
     door.unlock('olivier');
-    assert(contains(door.locks, 'olivier') === false);
+    assert(contains(door.keys, 'olivier') === false);
+  });
+});
+
+describe("Lock", function() {
+  it("should lock a lock previously unlocked", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    door.unlock('olivier');
+
+
+    assert(contains(door.keys, 'olivier') === false);
   });
 });

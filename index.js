@@ -15,7 +15,9 @@ module.exports = Doors;
 
 function Doors(name) {
 	this.name = name;
-  this.locks = [];
+  this.keys = [];
+  this.locks = {};
+
 }
 
 
@@ -31,9 +33,9 @@ Emitter(Doors.prototype);
  * @api public
  */
 
-Doors.prototype.add = function(name) {
-	if(!~index(this.locks, name)) {
-		this.locks.push(name);
+Doors.prototype.add = function(lock) {
+	if(!~index(this.keys, lock)) {
+		this.keys.push(lock);
 	}
 };
 
@@ -53,8 +55,8 @@ Doors.prototype.lock = function(name) {
  * @return {[type]} [description]
  */
 
-Doors.prototype.unlock = function(name) {
-	var idx = index(this.locks, name);
-	this.locks.splice(idx, 1);
+Doors.prototype.unlock = function(key) {
+	var idx = index(this.keys, key);
+	this.keys.splice(idx, 1);
 };
 
