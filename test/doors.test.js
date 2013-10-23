@@ -2,6 +2,7 @@ var Doors = require('doors');
 
 var assert = require('assert');
 var contains = require('contains');
+var count = require('count');
 
 
 
@@ -18,6 +19,13 @@ describe("Add lock", function() {
     var door = new Doors('bredele');
     door.add('olivier');
     assert(contains(door.locks, 'olivier') === true);
+  });
+  
+  it("should not add a lock twice", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    door.add('olivier');
+    assert(count(door.locks, 'olivier') === 1);
   });
   
 });

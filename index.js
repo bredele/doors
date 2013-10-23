@@ -1,4 +1,5 @@
-var Emitter = require('emitter');
+var Emitter = require('emitter'),
+		index = require('indexof');
 
 /**
  * Expose 'Doors'
@@ -29,7 +30,9 @@ Emitter(Doors.prototype);
  */
 
 Doors.prototype.add = function(name) {
-	this.locks.push(name);
+	if(!~index(this.locks, name)) {
+		this.locks.push(name);
+	}
 };
 
 

@@ -5,11 +5,13 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "component/emitter": "*"
+    "component/emitter": "*",
+    "component/indexof": "*"
   },
   "development": {
     "component/assert": "*",
-    "leafs/array-contains": "*"
+    "leafs/array-contains": "*",
+    "leafs/array-count": "*"
   },
   "license": "MIT",
   "main": "index.js",
