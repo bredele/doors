@@ -93,3 +93,15 @@ describe("Lock", function() {
     assert(contains(door.keys, 'olivier') === true);
   });
 });
+
+describe("Open", function() {
+  it("returns true if door is open", function() {
+    var door = new Doors('bredele');
+    door.add('olivier');
+    assert(door.open() === false);
+    door.unlock('olivier');
+    assert(door.open() === true);
+  });
+
+
+});

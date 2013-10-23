@@ -54,14 +54,19 @@ Doors.prototype.lock = function(name) {
 
 
 /**
- * [lock description]
- * @return {[type]} [description]
+ * Open the door only if all locks are unlocked.
+ * and emit open event.
+ * 
+ * @return {Boolean} true if open
+ * @api public
  */
 
 Doors.prototype.open = function() {
 	if(!this.keys.length) {
 		this.emit('open');
+		return true;
 	}
+	return false;
 };
 
 
