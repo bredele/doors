@@ -12,12 +12,14 @@ module.exports = Doors;
  * @api public
  */
 
-function Doors() {
-  //do something
+function Doors(name) {
+	this.name = name;
+  this.locks = [];
 }
 
 
 //Doors is an emitter
+
 Emitter(Doors.prototype);
 
 
@@ -26,7 +28,17 @@ Emitter(Doors.prototype);
  * @return {[type]} [description]
  */
 
-Doors.prototype.lock = function() {
+Doors.prototype.add = function(name) {
+	this.locks.push(name);
+};
+
+
+/**
+ * [lock description]
+ * @return {[type]} [description]
+ */
+
+Doors.prototype.lock = function(name) {
 	
 };
 
@@ -36,6 +48,6 @@ Doors.prototype.lock = function() {
  * @return {[type]} [description]
  */
 
-Doors.prototype.unlock = function() {
+Doors.prototype.unlock = function(name) {
 	
 };
