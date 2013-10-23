@@ -15,7 +15,7 @@ module.exports = Doors;
 
 function Doors(name) {
 	this.name = name;
-  this.keys = [];
+	this.keys = [];
   this.locks = {};
 
 }
@@ -35,6 +35,7 @@ Emitter(Doors.prototype);
 
 Doors.prototype.add = function(lock) {
 	if(!~index(this.keys, lock)) {
+		this.locks[lock] = lock;
 		this.keys.push(lock);
 	}
 };
@@ -55,8 +56,36 @@ Doors.prototype.lock = function(name) {
  * @return {[type]} [description]
  */
 
-Doors.prototype.unlock = function(key) {
-	var idx = index(this.keys, key);
-	this.keys.splice(idx, 1);
+Doors.prototype.open = function() {
+	if(!this.keys.length) {
+		this.emit('open');
+	}
+};
+
+
+/**
+ * Unlock door's lock(s).
+ * Examples:
+ *
+ *     door.unlock('olivier'); //unlock 'olivier'
+ *     door.unlock('olivier', 'amy'); //unlock 'olivier' and 'amy'
+ *     door.unlock(); //unlock all the locks
+ *
+ * @param {String} html string to be escaped
+ * @api public
+ */
+
+Doors.prototype.unlock = function() {
+	var length = arguments.length;
+	if(length) {
+		for(var l = arguments.length; l--;) {
+			var key = arguments[l];
+			var idx = index(this.keys, key);
+			this.keys.splice(idx, 1);
+			delete this.locks[key];
+		}
+	} else {
+		this.unlock.apply(this, this.keys);
+	}
 };
 

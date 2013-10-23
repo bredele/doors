@@ -31,12 +31,41 @@ describe("Add lock", function() {
 });
 
 describe("Unlock", function() {
-  it("should unlock a lock previously added", function() {
-    var door = new Doors('bredele');
+  var door = null;
+  beforeEach(function() {
+    door = new Doors('bredele');
     door.add('olivier');
+  });
+  
+  it("should unlock a lock previously added", function() {
     door.unlock('olivier');
     assert(contains(door.keys, 'olivier') === false);
   });
+
+  it('should unlock multiple locks', function() {
+    door.add('amy');
+    door.unlock('olivier', 'amy');
+    assert(contains(door.keys, 'olivier') === false);
+    assert(contains(door.keys, 'amy') === false);
+  });
+
+  it('should unlock the entire door if no arguments are passed', function() {
+    door.add('amy');
+    door.unlock();
+    assert(contains(door.keys, 'olivier') === false);
+    assert(contains(door.keys, 'amy') === false);
+  });
+
+  it('should emit an open event if the every locks are unlocked', function() {
+    var isOpen = false;
+    door.add('amy');
+    door.on('open', function() {
+      isOpen = true;
+    });
+    door.unlock();
+    assert(isOpen === true);
+  });
+
 });
 
 describe("Lock", function() {
