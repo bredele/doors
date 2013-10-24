@@ -169,5 +169,38 @@ describe("Door inception", function() {
     door.add(lock);
     assert(door.has('github') === true);
   });
+
+  it("should unlock child door if unlocked from parent door", function() {
+    var isOpen = false;
+    var lock = new Doors('lock1');
+    lock.add('olivier');
+    door.add(lock);
+    lock.on('open', function() {
+      isOpen = true;
+    });
+    door.unlock('lock1');
+    assert(isOpen === true);
+
+  });
+
+  it('shoud unlock child in parent if child is openned', function() {
+    var lock = new Doors('lock2');
+    lock.add('olivier');
+    door.add(lock);
+    lock.unlock();
+    assert(door.has('lock2') === false);
+  });
+
+  // it("should lock child door if locked from parent door", function() {
+  //   var lock = new Doors('github');
+  //   door.add(lock);
+  //   door.unlock('github');
+  //   lock.add('olivier');
+  //   lock.unlock();
+  //   debugger
+  //   door.lock('github');
+  //   assert(lock.has('olivier') === true);
+
+  // });
   
 });

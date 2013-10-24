@@ -54,7 +54,12 @@ Doors.prototype.add = function(lock) {
 	if(!this.has(lock)) {
 		var key = lock;
 		if(lock instanceof Doors) {
+			var _this = this;
 			key = lock.name;
+			lock.on('open', function() {
+				debugger
+				_this.unlock(key);
+			});
 		}
 		this.locks[key] = lock;
 		this.keys.push(key);
@@ -79,10 +84,14 @@ Doors.prototype.lock = function() {
 		for(var l = length; l--;) {
 			var key = arguments[l];
 			if(this.locks[key] && !this.has(key)) {
+				var lock = this.locks[key];
+				if(lock instanceof Doors) {
+					lock.lock();
+				}
 				this.keys.push(key);
 			}
 		}
-	} else {
+	} else if(Object.keys(this.locks).length){
 		this.lock.apply(this, Object.keys(this.locks));
 	}
 };
@@ -105,10 +114,16 @@ Doors.prototype.unlock = function() {
 	if(length) {
 		for(var l = length; l--;) {
 			var key = arguments[l];
-			if(this.has(key)) this.keys.splice(index(this.keys, key), 1);
-			this.open();
+			if(this.has(key)) {
+				var lock = this.locks[key];
+				this.keys.splice(index(this.keys, key), 1);
+				if(lock instanceof Doors) {
+					lock.unlock();
+				}
+				this.open();
+			}
 		}
-	} else {
+	} else if(this.keys.length){
 		this.unlock.apply(this, this.keys);
 	}
 };
