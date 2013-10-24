@@ -24,6 +24,11 @@
   Doors constructor. Initialize door with a key (mandatory) and
   an optional array of locks.
 
+```js
+	var Doors = require('doors');
+  var door = new Doors('github');
+```
+
 ### Doors.has(key:String)
 
   Return true if has lock.
