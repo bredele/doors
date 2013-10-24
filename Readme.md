@@ -19,22 +19,27 @@
   - [Doors.toggle()](#doorstogglenamestringboolboolean)
   - [Doors.open()](#doorsopen)
 
-### Doors()
+### Doors(key:String, locks:Array)
 
   Doors constructor.
 
 ### Doors.has(key:String)
 
-  Has key.
+  Return true if has lock.
 
-### Doors.add(name:String)
+### Doors.add(key:String)
 
-  Add lock.
+  Add string lock or child door.
+
+```js
+  door.add('olivier');
+  door.add(new Doors('child')); 
+```
 
 ### Doors.lock()
 
   Lock a previously added lock.
-  Examples:
+
   
 ```js
   door.lock('olivier'); //lock 'olivier'
@@ -45,7 +50,7 @@
 ### Doors.unlock()
 
   Unlock door's lock(s).
-  Examples:
+
   
 ```js
   door.unlock('olivier'); //unlock 'olivier'
@@ -57,11 +62,16 @@
 
   Toggle Lock.
 
+```js
+  door.toggle('olivier'); //lock
+  door.toggle('olivier', true); //unlock
+
+```
+
 ### Doors.open()
 
   Open the door only if all locks are unlocked.
   and emit open event.
-
 
 
 ## License
