@@ -19,9 +19,10 @@
   - [Doors.toggle()](#doorstogglenamestringboolboolean)
   - [Doors.open()](#doorsopen)
 
-### Doors(key:String, locks:Array)
+### Doors(key:String, [locks:Array])
 
-  Doors constructor.
+  Doors constructor. Initialize door with a key (mandatory) and
+  an optional array of locks.
 
 ### Doors.has(key:String)
 
@@ -58,7 +59,7 @@
   door.unlock(); //unlock all the locks
 ```
 
-### Doors.toggle(name:String, bool:Boolean)
+### Doors.toggle(key:String, bool:Boolean)
 
   Toggle Lock.
 
