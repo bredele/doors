@@ -1,0 +1,515 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'dox' ]
+2 info using npm@1.3.11
+3 info using node@v0.10.20
+4 verbose cache add [ 'dox', null ]
+5 verbose cache add name=undefined spec="dox" args=["dox",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'dox',
+6 verbose parsed url   path: 'dox',
+6 verbose parsed url   href: 'dox' }
+7 silly lockFile 2850683d-dox dox
+8 verbose lock dox /Users/olivier/.npm/2850683d-dox.lock
+9 silly lockFile 2850683d-dox dox
+10 silly lockFile 2850683d-dox dox
+11 verbose addNamed [ 'dox', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 81784ffa-dox dox@
+14 verbose lock dox@ /Users/olivier/.npm/81784ffa-dox.lock
+15 silly addNameRange { name: 'dox', range: '*', hasData: false }
+16 verbose url raw dox
+17 verbose url resolving [ 'https://registry.npmjs.org/', './dox' ]
+18 verbose url resolved https://registry.npmjs.org/dox
+19 info trying registry request attempt 1 at 19:16:55
+20 http GET https://registry.npmjs.org/dox
+21 http 200 https://registry.npmjs.org/dox
+22 silly registry.get cb [ 200,
+22 silly registry.get   { vary: 'Accept',
+22 silly registry.get     server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+22 silly registry.get     etag: '"C4WRQFITT3PRV15YU2LYTTH50"',
+22 silly registry.get     date: 'Thu, 24 Oct 2013 01:16:54 GMT',
+22 silly registry.get     'content-type': 'application/json',
+22 silly registry.get     'content-length': '194790' } ]
+23 silly addNameRange number 2 { name: 'dox', range: '*', hasData: true }
+24 silly addNameRange versions [ 'dox',
+24 silly addNameRange   [ '0.0.3',
+24 silly addNameRange     '0.0.4',
+24 silly addNameRange     '0.0.5',
+24 silly addNameRange     '0.1.0',
+24 silly addNameRange     '0.1.1',
+24 silly addNameRange     '0.1.2',
+24 silly addNameRange     '0.1.3',
+24 silly addNameRange     '0.2.0',
+24 silly addNameRange     '0.3.0',
+24 silly addNameRange     '0.3.1',
+24 silly addNameRange     '0.3.2',
+24 silly addNameRange     '0.3.3',
+24 silly addNameRange     '0.4.0',
+24 silly addNameRange     '0.4.1',
+24 silly addNameRange     '0.4.2',
+24 silly addNameRange     '0.4.3',
+24 silly addNameRange     '0.4.4' ] ]
+25 verbose addNamed [ 'dox', '0.4.4' ]
+26 verbose addNamed [ '0.4.4', '0.4.4' ]
+27 silly lockFile 6d76575c-dox-0-4-4 dox@0.4.4
+28 verbose lock dox@0.4.4 /Users/olivier/.npm/6d76575c-dox-0-4-4.lock
+29 silly lockFile cad451fb-stry-npmjs-org-dox-dox-0-4-4-tgz https://registry.npmjs.org/dox/-/dox-0.4.4.tgz
+30 verbose lock https://registry.npmjs.org/dox/-/dox-0.4.4.tgz /Users/olivier/.npm/cad451fb-stry-npmjs-org-dox-dox-0-4-4-tgz.lock
+31 verbose addRemoteTarball [ 'https://registry.npmjs.org/dox/-/dox-0.4.4.tgz',
+31 verbose addRemoteTarball   '4f898abbb88cd879c7c49a4973abc95b7f384823' ]
+32 info retry fetch attempt 1 at 19:16:58
+33 verbose fetch to= /Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/tmp.tgz
+34 http GET https://registry.npmjs.org/dox/-/dox-0.4.4.tgz
+35 http 200 https://registry.npmjs.org/dox/-/dox-0.4.4.tgz
+36 verbose tar unpack /Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/tmp.tgz
+37 silly lockFile 938e4685-8055-0-05558625306002796-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+38 verbose lock tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package /Users/olivier/.npm/938e4685-8055-0-05558625306002796-package.lock
+39 silly lockFile f465e6a7-8055-0-05558625306002796-tmp-tgz tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/tmp.tgz
+40 verbose lock tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/tmp.tgz /Users/olivier/.npm/f465e6a7-8055-0-05558625306002796-tmp-tgz.lock
+41 silly gunzTarPerm modes [ '755', '644' ]
+42 silly gunzTarPerm extractEntry package.json
+43 silly gunzTarPerm extractEntry .npmignore
+44 silly gunzTarPerm extractEntry index.js
+45 silly gunzTarPerm extractEntry .gitmodules
+46 silly gunzTarPerm extractEntry bin/dox
+47 silly gunzTarPerm extractEntry History.md
+48 silly gunzTarPerm extractEntry lib/api.js
+49 silly gunzTarPerm extractEntry lib/dox.js
+50 silly gunzTarPerm extractEntry lib/utils.js
+51 silly gunzTarPerm extractEntry Makefile
+52 silly gunzTarPerm extractEntry Readme.md
+53 silly lockFile 938e4685-8055-0-05558625306002796-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+54 silly lockFile 938e4685-8055-0-05558625306002796-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+55 silly lockFile f465e6a7-8055-0-05558625306002796-tmp-tgz tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/tmp.tgz
+56 silly lockFile f465e6a7-8055-0-05558625306002796-tmp-tgz tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/tmp.tgz
+57 verbose tar pack [ '/Users/olivier/.npm/dox/0.4.4/package.tgz',
+57 verbose tar pack   '/Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package' ]
+58 verbose tarball /Users/olivier/.npm/dox/0.4.4/package.tgz
+59 verbose folder /Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+60 silly lockFile 938e4685-8055-0-05558625306002796-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+61 verbose lock tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package /Users/olivier/.npm/938e4685-8055-0-05558625306002796-package.lock
+62 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+63 verbose lock tar:///Users/olivier/.npm/dox/0.4.4/package.tgz /Users/olivier/.npm/f5cc7e0c-livier-npm-dox-0-4-4-package-tgz.lock
+64 silly lockFile 938e4685-8055-0-05558625306002796-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+65 silly lockFile 938e4685-8055-0-05558625306002796-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577418055-0.05558625306002796/package
+66 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+67 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+68 silly lockFile 069bff15-rs-olivier-npm-dox-0-4-4-package /Users/olivier/.npm/dox/0.4.4/package
+69 verbose lock /Users/olivier/.npm/dox/0.4.4/package /Users/olivier/.npm/069bff15-rs-olivier-npm-dox-0-4-4-package.lock
+70 silly lockFile 069bff15-rs-olivier-npm-dox-0-4-4-package /Users/olivier/.npm/dox/0.4.4/package
+71 silly lockFile 069bff15-rs-olivier-npm-dox-0-4-4-package /Users/olivier/.npm/dox/0.4.4/package
+72 verbose tar unpack /Users/olivier/.npm/dox/0.4.4/package.tgz
+73 silly lockFile 2e48647d-rs-olivier-npm-dox-0-4-4-package tar:///Users/olivier/.npm/dox/0.4.4/package
+74 verbose lock tar:///Users/olivier/.npm/dox/0.4.4/package /Users/olivier/.npm/2e48647d-rs-olivier-npm-dox-0-4-4-package.lock
+75 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+76 verbose lock tar:///Users/olivier/.npm/dox/0.4.4/package.tgz /Users/olivier/.npm/f5cc7e0c-livier-npm-dox-0-4-4-package-tgz.lock
+77 silly gunzTarPerm modes [ '755', '644' ]
+78 silly gunzTarPerm extractEntry package.json
+79 silly gunzTarPerm extractEntry .npmignore
+80 silly gunzTarPerm extractEntry index.js
+81 silly gunzTarPerm extractEntry .gitmodules
+82 silly gunzTarPerm extractEntry History.md
+83 silly gunzTarPerm extractEntry Makefile
+84 silly gunzTarPerm extractEntry Readme.md
+85 silly gunzTarPerm extractEntry bin/dox
+86 silly gunzTarPerm extractEntry lib/api.js
+87 silly gunzTarPerm extractEntry lib/dox.js
+88 silly gunzTarPerm extractEntry lib/utils.js
+89 silly lockFile 2e48647d-rs-olivier-npm-dox-0-4-4-package tar:///Users/olivier/.npm/dox/0.4.4/package
+90 silly lockFile 2e48647d-rs-olivier-npm-dox-0-4-4-package tar:///Users/olivier/.npm/dox/0.4.4/package
+91 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+92 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+93 verbose chmod /Users/olivier/.npm/dox/0.4.4/package.tgz 644
+94 verbose chown /Users/olivier/.npm/dox/0.4.4/package.tgz [ 501, 20 ]
+95 silly lockFile cad451fb-stry-npmjs-org-dox-dox-0-4-4-tgz https://registry.npmjs.org/dox/-/dox-0.4.4.tgz
+96 silly lockFile cad451fb-stry-npmjs-org-dox-dox-0-4-4-tgz https://registry.npmjs.org/dox/-/dox-0.4.4.tgz
+97 silly lockFile 6d76575c-dox-0-4-4 dox@0.4.4
+98 silly lockFile 6d76575c-dox-0-4-4 dox@0.4.4
+99 silly lockFile 81784ffa-dox dox@
+100 silly lockFile 81784ffa-dox dox@
+101 silly resolved [ { name: 'dox',
+101 silly resolved     description: 'Markdown / JSdoc documentation generator',
+101 silly resolved     version: '0.4.4',
+101 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+101 silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/dox.git' },
+101 silly resolved     keywords: [ 'documentation', 'docs', 'markdown', 'jsdoc' ],
+101 silly resolved     bin: { dox: './bin/dox' },
+101 silly resolved     dependencies: { 'github-flavored-markdown': '>= 0.0.1', commander: '0.6.1' },
+101 silly resolved     devDependencies: { mocha: '*', should: '*' },
+101 silly resolved     readme: '# Dox\n\n Dox is a JavaScript documentation generator written with [node](http://nodejs.org). Dox no longer generates an opinionated structure or style for your docs, it simply gives you a JSON representation, allowing you to use _markdown_ and _JSDoc_-style tags.\n\n## Installation\n\nInstall from npm:\n\n    $ npm install -g dox\n\n## Usage Examples\n\n`dox(1)` operates over stdio:\n\n    $ dox < utils.js\n    ...JSON... \n\n to inspect the generated data you can use the `--debug` flag, which is easier to read than the JSON output:\n \n     $ dox --debug < utils.js \n\nutils.js:\n\n```js\n/**\n * Escape the given `html`.\n *\n * Examples:\n *\n *     utils.escape(\'<script></script>\')\n *     // => \'&lt;script&gt;&lt;/script&gt;\'\n *\n * @param {String} html string to be escaped\n * @return {String} escaped html\n * @api public\n */\n\nexports.escape = function(html){\n  return String(html)\n    .replace(/&(?!\\w+;)/g, \'&amp;\')\n    .replace(/</g, \'&lt;\')\n    .replace(/>/g, \'&gt;\');\n};\n```\n\noutput:\n\n```json\n[\n  {\n    "tags": [\n      {\n        "type": "param",\n        "types": [\n          "String"\n        ],\n        "name": "html",\n        "description": "string to be escaped"\n      },\n      {\n        "type": "return",\n        "types": [\n          "String"\n        ],\n        "description": "escaped html"\n      },\n      {\n        "type": "api",\n        "visibility": "public"\n      }\n    ],\n    "description": {\n      "full": "<p>Escape the given <code>html</code>.</p>\\n\\n<h2>Examples</h2>\\n\\n<pre><code>utils.escape(\'&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;\')\\n// =&amp;gt; \'&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;\'\\n</code></pre>",\n      "summary": "<p>Escape the given <code>html</code>.</p>",\n      "body": "<h2>Examples</h2>\\n\\n<pre><code>utils.escape(\'&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;\')\\n// =&amp;gt; \'&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;\'\\n</code></pre>"\n    },\n    "isPrivate": false,\n    "ignore": false,\n    "code": "exports.escape = function(html){\\n  return String(html)\\n    .replace(/&(?!\\\\w+;)/g, \'&amp;\')\\n    .replace(/</g, \'&lt;\')\\n    .replace(/>/g, \'&gt;\');\\n};",\n    "ctx": {\n      "type": "method",\n      "receiver": "exports",\n      "name": "escape",\n      "string": "exports.escape()"\n    }\n  }\n]\n```\n\nThis output can then be passed to a template for rendering. Look below at the "Properties" section for details.\n\n## Usage\n\n```\n\nUsage: dox [options]\n\nOptions:\n\n  -h, --help     output usage information\n  -v, --version  output the version number\n  -d, --debug    output parsed comments for debugging\n\nExamples:\n\n  # stdin\n  $ dox > myfile.json\n\n  # operates over stdio\n  $ dox < myfile.js > myfile.json\n\n```\n\n## Properties\n\n  A "comment" is comprised of the following detailed properties:\n  \n    - tags\n    - description\n    - isPrivate\n    - ignore\n    - code\n    - ctx\n\n### Description\n\n  A dox description is comprised of three parts, the "full" description,\n  the "summary", and the "body". The following example has only a "summary",\n  as it consists of a single paragraph only, therefore the "full" property has\n  only this value as well.\n\n```js\n/**\n * Output the given `str` to _stdout_.\n */\n\nexports.write = function(str) {\n  process.stdout.write(str);\n};\n````\nyields:\n\n```js\ndescription: \n     { full: \'<p>Output the given <code>str</code> to <em>stdout</em>.</p>\',\n       summary: \'<p>Output the given <code>str</code> to <em>stdout</em>.</p>\',\n       body: \'\' },\n```\n\n  Large descriptions might look something like the following, where the "summary" is still the first paragraph, the remaining description becomes the "body". Keep in mind this _is_ markdown, so you can indent code, use lists, links, etc. Dox also augments markdown, allowing "Some Title:\\n" to form a header.\n\n```js\n/**\n * Output the given `str` to _stdout_\n * or the stream specified by `options`.\n * \n * Options:\n * \n *   - `stream` defaulting to _stdout_\n * \n * Examples:\n * \n *     mymodule.write(\'foo\')\n *     mymodule.write(\'foo\', { stream: process.stderr })\n * \n */\n\nexports.write = function(str, options) {\n  options = options || {};\n  (options.stream || process.stdout).write(str);\n};\n```\n\nyields:\n\n```js\ndescription: \n     { full: \'<p>Output the given <code>str</code> to <em>stdout</em><br />or the stream specified by <code>options</code>.</p>\\n\\n<h2>Options</h2>\\n\\n<ul>\\n<li><code>stream</code> defaulting to <em>stdout</em></li>\\n</ul>\\n\\n<h2>Examples</h2>\\n\\n<pre><code>mymodule.write(\\\'foo\\\')\\nmymodule.write(\\\'foo\\\', { stream: process.stderr })\\n</code></pre>\',\n       summary: \'<p>Output the given <code>str</code> to <em>stdout</em><br />or the stream specified by <code>options</code>.</p>\',\n       body: \'<h2>Options</h2>\\n\\n<ul>\\n<li><code>stream</code> defaulting to <em>stdout</em></li>\\n</ul>\\n\\n<h2>Examples</h2>\\n\\n<pre><code>mymodule.write(\\\'foo\\\')\\nmymodule.write(\\\'foo\\\', { stream: process.stderr })\\n</code></pre>\' }\n```\n\n### Tags\n\n  Dox also supports JSdoc-style tags. Currently only __@api__ is special-cased, providing the `comment.isPrivate` boolean so you may omit "private" utilities etc.\n\n```js\n\n/**\n * Output the given `str` to _stdout_\n * or the stream specified by `options`.\n * \n * @param {String} str\n * @param {Object} options\n * @return {Object} exports for chaining\n */\n\nexports.write = function(str, options) {\n  options = options || {};\n  (options.stream || process.stdout).write(str);\n  return this;\n};\n```\n\nyields:\n\n```js\ntags: \n   [ { type: \'param\',\n       types: [ \'String\' ],\n       name: \'str\',\n       description: \'\' },\n     { type: \'param\',\n       types: [ \'Object\' ],\n       name: \'options\',\n       description: \'\' },\n     { type: \'return\',\n       types: [ \'Object\' ],\n       description: \'exports for chaining\' },\n     { type: \'api\',\n       visibility: \'public\' } ]\n```\n\n### Code\n\n The `.code` property is the code following the comment block, in our previous examples:\n\n```js\nexports.write = function(str, options) {\n  options = options || {};\n  (options.stream || process.stdout).write(str);\n  return this;\n};\n```\n\n### Ctx\n\n  The `.ctx` object indicates the context of the code block, is it a method, a function, a variable etc. Below are some examples:\n\n```js\nexports.write = function(str, options) {\n};\n```\n\nyields:\n\n```js\nctx: \n { type: \'method\',\n   receiver: \'exports\',\n   name: \'write\',\n   string: \'exports.write()\' } }\n```\n\n```js\nvar foo = \'bar\';\n```\n\nyields:\n\n```js\nctx: \n { type: \'declaration\',\n   name: \'foo\',\n   value: \'\\\'bar\\\'\',\n   string: \'foo\' }\n```\n\n```js\nfunction User() {\n  \n}\n```\n\nyields:\n\n```js\nctx: \n { type: \'function\',\n   name: \'User\',\n   string: \'User()\' } }\n```\n\n### Ignore\n\nComments and their associated bodies of code may be flagged with "!" to be considered worth ignoring, these are typically things like file comments containing copyright etc, however you of course can output them in your templates if you want.\n\n```\n/**\n * Not ignored.\n */\n```\n\nvs\n\n```\n/*!\n * Ignored.\n */\n```\n\n### Running tests\n\n Install dev dependencies and execute `make test`:\n \n     $ npm install -d\n     $ make test\n\n## License \n\n(The MIT License)\n\nCopyright (c) 2011 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
+101 silly resolved     readmeFilename: 'Readme.md',
+101 silly resolved     bugs: { url: 'https://github.com/visionmedia/dox/issues' },
+101 silly resolved     _id: 'dox@0.4.4',
+101 silly resolved     dist: { shasum: '745a15b627abaf78fd2ce9777a8cb68814056c47' },
+101 silly resolved     _from: 'dox@',
+101 silly resolved     _resolved: 'https://registry.npmjs.org/dox/-/dox-0.4.4.tgz' } ]
+102 info install dox@0.4.4 into /usr/local/lib
+103 info installOne dox@0.4.4
+104 info /usr/local/lib/node_modules/dox unbuild
+105 verbose tar unpack /Users/olivier/.npm/dox/0.4.4/package.tgz
+106 silly lockFile 60bf8a2e-r-usr-local-lib-node-modules-dox tar:///usr/local/lib/node_modules/dox
+107 verbose lock tar:///usr/local/lib/node_modules/dox /Users/olivier/.npm/60bf8a2e-r-usr-local-lib-node-modules-dox.lock
+108 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+109 verbose lock tar:///Users/olivier/.npm/dox/0.4.4/package.tgz /Users/olivier/.npm/f5cc7e0c-livier-npm-dox-0-4-4-package-tgz.lock
+110 silly gunzTarPerm modes [ '755', '644' ]
+111 silly gunzTarPerm extractEntry package.json
+112 silly gunzTarPerm extractEntry .npmignore
+113 silly gunzTarPerm extractEntry index.js
+114 silly gunzTarPerm extractEntry .gitmodules
+115 silly gunzTarPerm extractEntry History.md
+116 silly gunzTarPerm extractEntry Makefile
+117 silly gunzTarPerm extractEntry Readme.md
+118 silly gunzTarPerm extractEntry bin/dox
+119 silly gunzTarPerm extractEntry lib/api.js
+120 silly gunzTarPerm extractEntry lib/dox.js
+121 silly gunzTarPerm extractEntry lib/utils.js
+122 silly lockFile 60bf8a2e-r-usr-local-lib-node-modules-dox tar:///usr/local/lib/node_modules/dox
+123 silly lockFile 60bf8a2e-r-usr-local-lib-node-modules-dox tar:///usr/local/lib/node_modules/dox
+124 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+125 silly lockFile f5cc7e0c-livier-npm-dox-0-4-4-package-tgz tar:///Users/olivier/.npm/dox/0.4.4/package.tgz
+126 info preinstall dox@0.4.4
+127 verbose readDependencies using package.json deps
+128 verbose readDependencies using package.json deps
+129 verbose cache add [ 'github-flavored-markdown@>= 0.0.1', null ]
+130 verbose cache add name=undefined spec="github-flavored-markdown@>= 0.0.1" args=["github-flavored-markdown@>= 0.0.1",null]
+131 verbose parsed url { protocol: null,
+131 verbose parsed url   slashes: null,
+131 verbose parsed url   auth: null,
+131 verbose parsed url   host: null,
+131 verbose parsed url   port: null,
+131 verbose parsed url   hostname: null,
+131 verbose parsed url   hash: null,
+131 verbose parsed url   search: null,
+131 verbose parsed url   query: null,
+131 verbose parsed url   pathname: 'github-flavored-markdown@%3E=%200.0.1',
+131 verbose parsed url   path: 'github-flavored-markdown@%3E=%200.0.1',
+131 verbose parsed url   href: 'github-flavored-markdown@%3E=%200.0.1' }
+132 verbose cache add name="github-flavored-markdown" spec=">= 0.0.1" args=["github-flavored-markdown",">= 0.0.1"]
+133 verbose parsed url { protocol: null,
+133 verbose parsed url   slashes: null,
+133 verbose parsed url   auth: null,
+133 verbose parsed url   host: null,
+133 verbose parsed url   port: null,
+133 verbose parsed url   hostname: null,
+133 verbose parsed url   hash: null,
+133 verbose parsed url   search: null,
+133 verbose parsed url   query: null,
+133 verbose parsed url   pathname: '%3E=%200.0.1',
+133 verbose parsed url   path: '%3E=%200.0.1',
+133 verbose parsed url   href: '%3E=%200.0.1' }
+134 verbose addNamed [ 'github-flavored-markdown', '>= 0.0.1' ]
+135 verbose addNamed [ null, '>=0.0.1' ]
+136 silly lockFile 5895ccf6-github-flavored-markdown-0-0-1 github-flavored-markdown@>= 0.0.1
+137 verbose lock github-flavored-markdown@>= 0.0.1 /Users/olivier/.npm/5895ccf6-github-flavored-markdown-0-0-1.lock
+138 verbose cache add [ 'commander@0.6.1', null ]
+139 verbose cache add name=undefined spec="commander@0.6.1" args=["commander@0.6.1",null]
+140 verbose parsed url { protocol: null,
+140 verbose parsed url   slashes: null,
+140 verbose parsed url   auth: null,
+140 verbose parsed url   host: null,
+140 verbose parsed url   port: null,
+140 verbose parsed url   hostname: null,
+140 verbose parsed url   hash: null,
+140 verbose parsed url   search: null,
+140 verbose parsed url   query: null,
+140 verbose parsed url   pathname: 'commander@0.6.1',
+140 verbose parsed url   path: 'commander@0.6.1',
+140 verbose parsed url   href: 'commander@0.6.1' }
+141 verbose cache add name="commander" spec="0.6.1" args=["commander","0.6.1"]
+142 verbose parsed url { protocol: null,
+142 verbose parsed url   slashes: null,
+142 verbose parsed url   auth: null,
+142 verbose parsed url   host: null,
+142 verbose parsed url   port: null,
+142 verbose parsed url   hostname: null,
+142 verbose parsed url   hash: null,
+142 verbose parsed url   search: null,
+142 verbose parsed url   query: null,
+142 verbose parsed url   pathname: '0.6.1',
+142 verbose parsed url   path: '0.6.1',
+142 verbose parsed url   href: '0.6.1' }
+143 verbose addNamed [ 'commander', '0.6.1' ]
+144 verbose addNamed [ '0.6.1', '0.6.1' ]
+145 silly lockFile fa16a2ce-commander-0-6-1 commander@0.6.1
+146 verbose lock commander@0.6.1 /Users/olivier/.npm/fa16a2ce-commander-0-6-1.lock
+147 silly addNameRange { name: 'github-flavored-markdown',
+147 silly addNameRange   range: '>=0.0.1',
+147 silly addNameRange   hasData: false }
+148 verbose url raw github-flavored-markdown
+149 verbose url resolving [ 'https://registry.npmjs.org/', './github-flavored-markdown' ]
+150 verbose url resolved https://registry.npmjs.org/github-flavored-markdown
+151 info trying registry request attempt 1 at 19:16:59
+152 http GET https://registry.npmjs.org/github-flavored-markdown
+153 verbose url raw commander/0.6.1
+154 verbose url resolving [ 'https://registry.npmjs.org/', './commander/0.6.1' ]
+155 verbose url resolved https://registry.npmjs.org/commander/0.6.1
+156 info trying registry request attempt 1 at 19:16:59
+157 verbose etag "27IZG02YYKQFVTUPHC3CC5OQ5"
+158 http GET https://registry.npmjs.org/commander/0.6.1
+159 http 304 https://registry.npmjs.org/commander/0.6.1
+160 silly registry.get cb [ 304,
+160 silly registry.get   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+160 silly registry.get     etag: '"27IZG02YYKQFVTUPHC3CC5OQ5"',
+160 silly registry.get     date: 'Thu, 24 Oct 2013 01:16:57 GMT',
+160 silly registry.get     'content-length': '0' } ]
+161 verbose etag commander/0.6.1 from cache
+162 silly lockFile fa16a2ce-commander-0-6-1 commander@0.6.1
+163 silly lockFile fa16a2ce-commander-0-6-1 commander@0.6.1
+164 http 200 https://registry.npmjs.org/github-flavored-markdown
+165 silly registry.get cb [ 200,
+165 silly registry.get   { vary: 'Accept',
+165 silly registry.get     server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+165 silly registry.get     etag: '"5A8F1CX1COBM4B8JTQ17NBLZV"',
+165 silly registry.get     date: 'Thu, 24 Oct 2013 01:16:57 GMT',
+165 silly registry.get     'content-type': 'application/json',
+165 silly registry.get     'content-length': '3067' } ]
+166 silly addNameRange number 2 { name: 'github-flavored-markdown',
+166 silly addNameRange   range: '>=0.0.1',
+166 silly addNameRange   hasData: true }
+167 silly addNameRange versions [ 'github-flavored-markdown', [ '1.0.0', '1.0.1' ] ]
+168 verbose addNamed [ 'github-flavored-markdown', '1.0.1' ]
+169 verbose addNamed [ '1.0.1', '1.0.1' ]
+170 silly lockFile bd57378e-github-flavored-markdown-1-0-1 github-flavored-markdown@1.0.1
+171 verbose lock github-flavored-markdown@1.0.1 /Users/olivier/.npm/bd57378e-github-flavored-markdown-1-0-1.lock
+172 warn deprecated github-flavored-markdown@1.0.1: This project is long out of date. Use 'marked' instead.
+173 silly lockFile aa54cb6d-thub-flavored-markdown-1-0-1-tgz https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz
+174 verbose lock https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz /Users/olivier/.npm/aa54cb6d-thub-flavored-markdown-1-0-1-tgz.lock
+175 verbose addRemoteTarball [ 'https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz',
+175 verbose addRemoteTarball   '93361b87a31c25790d9c81a1b798214a737eab38' ]
+176 info retry fetch attempt 1 at 19:16:59
+177 verbose fetch to= /Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/tmp.tgz
+178 http GET https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz
+179 http 200 https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz
+180 verbose tar unpack /Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/tmp.tgz
+181 silly lockFile 85245695-19708-0-5930330590344965-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+182 verbose lock tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package /Users/olivier/.npm/85245695-19708-0-5930330590344965-package.lock
+183 silly lockFile 9030dced-19708-0-5930330590344965-tmp-tgz tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/tmp.tgz
+184 verbose lock tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/tmp.tgz /Users/olivier/.npm/9030dced-19708-0-5930330590344965-tmp-tgz.lock
+185 silly gunzTarPerm modes [ '755', '644' ]
+186 silly gunzTarPerm extractEntry .npmignore
+187 silly gunzTarPerm extractEntry _config.yml
+188 silly gunzTarPerm extractEntry _layouts/
+189 silly gunzTarPerm extractEntry _layouts/default.html
+190 silly gunzTarPerm extractEntry code.rb
+191 silly gunzTarPerm extractEntry images/
+192 silly gunzTarPerm extractEntry images/gfm.png
+193 silly gunzTarPerm extractEntry index.md
+194 silly gunzTarPerm extractEntry package.json
+195 silly gunzTarPerm extractEntry preview.md
+196 silly gunzTarPerm extractEntry README.md
+197 silly gunzTarPerm extractEntry sample_content.html
+198 silly gunzTarPerm extractEntry scripts/
+199 silly gunzTarPerm extractEntry scripts/preview.js
+200 silly gunzTarPerm extractEntry scripts/showdown.js
+201 silly gunzTarPerm extractEntry stylesheets/
+202 silly gunzTarPerm extractEntry stylesheets/screen.css
+203 silly lockFile 85245695-19708-0-5930330590344965-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+204 silly lockFile 85245695-19708-0-5930330590344965-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+205 silly lockFile 9030dced-19708-0-5930330590344965-tmp-tgz tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/tmp.tgz
+206 silly lockFile 9030dced-19708-0-5930330590344965-tmp-tgz tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/tmp.tgz
+207 verbose tar pack [ '/Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz',
+207 verbose tar pack   '/Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package' ]
+208 verbose tarball /Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+209 verbose folder /Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+210 silly lockFile 85245695-19708-0-5930330590344965-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+211 verbose lock tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package /Users/olivier/.npm/85245695-19708-0-5930330590344965-package.lock
+212 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+213 verbose lock tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz /Users/olivier/.npm/1cc84f35-vored-markdown-1-0-1-package-tgz.lock
+214 silly lockFile 85245695-19708-0-5930330590344965-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+215 silly lockFile 85245695-19708-0-5930330590344965-package tar:///Users/olivier/tmp/npm-36236-DtzO21iQ/1382577419708-0.5930330590344965/package
+216 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+217 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+218 silly lockFile e8e48654--flavored-markdown-1-0-1-package /Users/olivier/.npm/github-flavored-markdown/1.0.1/package
+219 verbose lock /Users/olivier/.npm/github-flavored-markdown/1.0.1/package /Users/olivier/.npm/e8e48654--flavored-markdown-1-0-1-package.lock
+220 silly lockFile e8e48654--flavored-markdown-1-0-1-package /Users/olivier/.npm/github-flavored-markdown/1.0.1/package
+221 silly lockFile e8e48654--flavored-markdown-1-0-1-package /Users/olivier/.npm/github-flavored-markdown/1.0.1/package
+222 verbose tar unpack /Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+223 silly lockFile ee8f4ba7--flavored-markdown-1-0-1-package tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package
+224 verbose lock tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package /Users/olivier/.npm/ee8f4ba7--flavored-markdown-1-0-1-package.lock
+225 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+226 verbose lock tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz /Users/olivier/.npm/1cc84f35-vored-markdown-1-0-1-package-tgz.lock
+227 silly gunzTarPerm modes [ '755', '644' ]
+228 silly gunzTarPerm extractEntry package.json
+229 silly gunzTarPerm extractEntry .npmignore
+230 silly gunzTarPerm extractEntry README.md
+231 silly gunzTarPerm extractEntry _layouts/default.html
+232 silly gunzTarPerm extractEntry code.rb
+233 silly gunzTarPerm extractEntry images/gfm.png
+234 silly gunzTarPerm extractEntry stylesheets/screen.css
+235 silly gunzTarPerm extractEntry _config.yml
+236 silly gunzTarPerm extractEntry preview.md
+237 silly gunzTarPerm extractEntry sample_content.html
+238 silly gunzTarPerm extractEntry scripts/preview.js
+239 silly gunzTarPerm extractEntry scripts/showdown.js
+240 silly gunzTarPerm extractEntry index.md
+241 silly lockFile ee8f4ba7--flavored-markdown-1-0-1-package tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package
+242 silly lockFile ee8f4ba7--flavored-markdown-1-0-1-package tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package
+243 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+244 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+245 verbose chmod /Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz 644
+246 verbose chown /Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz [ 501, 20 ]
+247 silly lockFile aa54cb6d-thub-flavored-markdown-1-0-1-tgz https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz
+248 silly lockFile aa54cb6d-thub-flavored-markdown-1-0-1-tgz https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz
+249 silly lockFile bd57378e-github-flavored-markdown-1-0-1 github-flavored-markdown@1.0.1
+250 silly lockFile bd57378e-github-flavored-markdown-1-0-1 github-flavored-markdown@1.0.1
+251 silly lockFile 5895ccf6-github-flavored-markdown-0-0-1 github-flavored-markdown@>= 0.0.1
+252 silly lockFile 5895ccf6-github-flavored-markdown-0-0-1 github-flavored-markdown@>= 0.0.1
+253 silly resolved [ { name: 'commander',
+253 silly resolved     version: '0.6.1',
+253 silly resolved     description: 'the complete solution for node.js command-line programs',
+253 silly resolved     keywords: [ 'command', 'option', 'parser', 'prompt', 'stdin' ],
+253 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+253 silly resolved     repository:
+253 silly resolved      { type: 'git',
+253 silly resolved        url: 'https://github.com/visionmedia/commander.js.git' },
+253 silly resolved     dependencies: {},
+253 silly resolved     devDependencies: { should: '>= 0.0.1' },
+253 silly resolved     scripts: { test: 'make test' },
+253 silly resolved     main: 'index',
+253 silly resolved     engines: { node: '>= 0.4.x' },
+253 silly resolved     readme: '# Commander.js\n\n  The complete solution for [node.js](http://nodejs.org) command-line interfaces, inspired by Ruby\'s [commander](https://github.com/visionmedia/commander).\n\n [![Build Status](https://secure.travis-ci.org/visionmedia/commander.js.png)](http://travis-ci.org/visionmedia/commander.js)\n\n## Installation\n\n    $ npm install commander\n\n## Option parsing\n\n Options with commander are defined with the `.option()` method, also serving as documentation for the options. The example below parses args and options from `process.argv`, leaving remaining args as the `program.args` array which were not consumed by options.\n\n```js\n#!/usr/bin/env node\n\n/**\n * Module dependencies.\n */\n\nvar program = require(\'commander\');\n\nprogram\n  .version(\'0.0.1\')\n  .option(\'-p, --peppers\', \'Add peppers\')\n  .option(\'-P, --pineapple\', \'Add pineapple\')\n  .option(\'-b, --bbq\', \'Add bbq sauce\')\n  .option(\'-c, --cheese [type]\', \'Add the specified type of cheese [marble]\', \'marble\')\n  .parse(process.argv);\n\nconsole.log(\'you ordered a pizza with:\');\nif (program.peppers) console.log(\'  - peppers\');\nif (program.pineapple) console.log(\'  - pineappe\');\nif (program.bbq) console.log(\'  - bbq\');\nconsole.log(\'  - %s cheese\', program.cheese);\n```\n\n Short flags may be passed as a single arg, for example `-abc` is equivalent to `-a -b -c`. Multi-word options such as "--template-engine" are camel-cased, becoming `program.templateEngine` etc.\n\n## Automated --help\n\n The help information is auto-generated based on the information commander already knows about your program, so the following `--help` info is for free:\n\n```  \n $ ./examples/pizza --help\n\n   Usage: pizza [options]\n\n   Options:\n\n     -V, --version        output the version number\n     -p, --peppers        Add peppers\n     -P, --pineapple      Add pineappe\n     -b, --bbq            Add bbq sauce\n     -c, --cheese <type>  Add the specified type of cheese [marble]\n     -h, --help           output usage information\n\n```\n\n## Coercion\n\n```js\nfunction range(val) {\n  return val.split(\'..\').map(Number);\n}\n\nfunction list(val) {\n  return val.split(\',\');\n}\n\nprogram\n  .version(\'0.0.1\')\n  .usage(\'[options] <file ...>\')\n  .option(\'-i, --integer <n>\', \'An integer argument\', parseInt)\n  .option(\'-f, --float <n>\', \'A float argument\', parseFloat)\n  .option(\'-r, --range <a>..<b>\', \'A range\', range)\n  .option(\'-l, --list <items>\', \'A list\', list)\n  .option(\'-o, --optional [value]\', \'An optional value\')\n  .parse(process.argv);\n\nconsole.log(\' int: %j\', program.integer);\nconsole.log(\' float: %j\', program.float);\nconsole.log(\' optional: %j\', program.optional);\nprogram.range = program.range || [];\nconsole.log(\' range: %j..%j\', program.range[0], program.range[1]);\nconsole.log(\' list: %j\', program.list);\nconsole.log(\' args: %j\', program.args);\n```\n\n## Custom help\n\n You can display arbitrary `-h, --help` information\n by listening for "--help". Commander will automatically\n exit once you are done so that the remainder of your program\n does not execute causing undesired behaviours, for example\n in the following executable "stuff" will not output when\n `--help` is used.\n\n```js\n#!/usr/bin/env node\n\n/**\n * Module dependencies.\n */\n\nvar program = require(\'../\');\n\nfunction list(val) {\n  return val.split(\',\').map(Number);\n}\n\nprogram\n  .version(\'0.0.1\')\n  .option(\'-f, --foo\', \'enable some foo\')\n  .option(\'-b, --bar\', \'enable some bar\')\n  .option(\'-B, --baz\', \'enable some baz\');\n\n// must be before .parse() since\n// node\'s emit() is immediate\n\nprogram.on(\'--help\', function(){\n  console.log(\'  Examples:\');\n  console.log(\'\');\n  console.log(\'    $ custom-help --help\');\n  console.log(\'    $ custom-help -h\');\n  console.log(\'\');\n});\n\nprogram.parse(process.argv);\n\nconsole.log(\'stuff\');\n```\n\nyielding the following help output:\n\n```\n\nUsage: custom-help [options]\n\nOptions:\n\n  -h, --help     output usage information\n  -V, --version  output the version number\n  -f, --foo      enable some foo\n  -b, --bar      enable some bar\n  -B, --baz      enable some baz\n\nExamples:\n\n  $ custom-help --help\n  $ custom-help -h\n\n```\n\n## .prompt(msg, fn)\n\n Single-line prompt:\n\n```js\nprogram.prompt(\'name: \', function(name){\n  console.log(\'hi %s\', name);\n});\n```\n\n Multi-line prompt:\n\n```js\nprogram.prompt(\'description:\', function(name){\n  console.log(\'hi %s\', name);\n});\n```\n\n Coercion:\n\n```js\nprogram.prompt(\'Age: \', Number, function(age){\n  console.log(\'age: %j\', age);\n});\n```\n\n```js\nprogram.prompt(\'Birthdate: \', Date, function(date){\n  console.log(\'date: %s\', date);\n});\n```\n\n## .password(msg[, mask], fn)\n\nPrompt for password without echoing:\n\n```js\nprogram.password(\'Password: \', function(pass){\n  console.log(\'got "%s"\', pass);\n  process.stdin.destroy();\n});\n```\n\nPrompt for password with mask char "*":\n\n```js\nprogram.password(\'Password: \', \'*\', function(pass){\n  console.log(\'got "%s"\', pass);\n  process.stdin.destroy();\n});\n```\n\n## .confirm(msg, fn)\n\n Confirm with the given `msg`:\n\n```js\nprogram.confirm(\'continue? \', function(ok){\n  console.log(\' got %j\', ok);\n});\n```\n\n## .choose(list, fn)\n\n Let the user choose from a `list`:\n\n```js\nvar list = [\'tobi\', \'loki\', \'jane\', \'manny\', \'luna\'];\n\nconsole.log(\'Choose the coolest pet:\');\nprogram.choose(list, function(i){\n  console.log(\'you chose %d "%s"\', i, list[i]);\n});\n```\n\n## Links\n\n - [API documentation](http://visionmedia.github.com/commander.js/)\n - [ascii tables](https://github.com/LearnBoost/cli-table)\n - [progress bars](https://github.com/visionmedia/node-progress)\n - [more progress bars](https://github.com/substack/node-multimeter)\n - [examples](https://github.com/visionmedia/commander.js/tree/master/examples)\n\n## License \n\n(The MIT License)\n\nCopyright (c) 2011 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.',
+253 silly resolved     readmeFilename: 'Readme.md',
+253 silly resolved     bugs: { url: 'https://github.com/visionmedia/commander.js/issues' },
+253 silly resolved     _id: 'commander@0.6.1',
+253 silly resolved     _from: 'commander@0.6.1' },
+253 silly resolved   { name: 'github-flavored-markdown',
+253 silly resolved     version: '1.0.1',
+253 silly resolved     description: 'The port of Showdown used on github.com',
+253 silly resolved     author:
+253 silly resolved      { name: 'tekkup',
+253 silly resolved        email: 'git@tekkub.net',
+253 silly resolved        url: 'http://tekkub.net/' },
+253 silly resolved     main: './scripts/showdown.js',
+253 silly resolved     repository:
+253 silly resolved      { type: 'git',
+253 silly resolved        url: 'http://github.com/isaacs/github-flavored-markdown' },
+253 silly resolved     readme: 'See:\n[github-flavored-markdown](http://github.github.com/github-flavored-markdown/)\n\nAs an npm package:\n\n    npm install github-flavored-markdown\n\nAnd then in your node program:\n\n    var ghm = require("github-flavored-markdown")\n    ghm.parse("I **love** GHM.\\n\\n#2", "isaacs/npm")\n    // returns:\n    // \'<p>I <strong>love</strong> GHM.  \'+\n    // \'<a href=\\\'http://github.com/isaacs/npm/issues/#issue/2\\\'>#2</a></p>\'\n\nTo get the sha/issue/fork links, pass in a second argument specifying\nthe current project that things should be relative to.\n',
+253 silly resolved     readmeFilename: 'README.md',
+253 silly resolved     bugs: { url: 'https://github.com/isaacs/github-flavored-markdown/issues' },
+253 silly resolved     _id: 'github-flavored-markdown@1.0.1',
+253 silly resolved     dist: { shasum: 'df4d018ecce4853b88792504fe832dc1c8f159d6' },
+253 silly resolved     deprecated: 'This project is long out of date. Use \'marked\' instead.',
+253 silly resolved     _from: 'github-flavored-markdown@>= 0.0.1',
+253 silly resolved     _resolved: 'https://registry.npmjs.org/github-flavored-markdown/-/github-flavored-markdown-1.0.1.tgz' } ]
+254 info install commander@0.6.1 into /usr/local/lib/node_modules/dox
+255 info install github-flavored-markdown@1.0.1 into /usr/local/lib/node_modules/dox
+256 info installOne commander@0.6.1
+257 info installOne github-flavored-markdown@1.0.1
+258 info /usr/local/lib/node_modules/dox/node_modules/commander unbuild
+259 info /usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown unbuild
+260 verbose tar unpack /Users/olivier/.npm/commander/0.6.1/package.tgz
+261 silly lockFile f57dcd85-dules-dox-node-modules-commander tar:///usr/local/lib/node_modules/dox/node_modules/commander
+262 verbose lock tar:///usr/local/lib/node_modules/dox/node_modules/commander /Users/olivier/.npm/f57dcd85-dules-dox-node-modules-commander.lock
+263 silly lockFile f858ed14--npm-commander-0-6-1-package-tgz tar:///Users/olivier/.npm/commander/0.6.1/package.tgz
+264 verbose lock tar:///Users/olivier/.npm/commander/0.6.1/package.tgz /Users/olivier/.npm/f858ed14--npm-commander-0-6-1-package-tgz.lock
+265 verbose tar unpack /Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+266 silly lockFile 73d80f6b-modules-github-flavored-markdown tar:///usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown
+267 verbose lock tar:///usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown /Users/olivier/.npm/73d80f6b-modules-github-flavored-markdown.lock
+268 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+269 verbose lock tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz /Users/olivier/.npm/1cc84f35-vored-markdown-1-0-1-package-tgz.lock
+270 silly gunzTarPerm modes [ '755', '644' ]
+271 silly gunzTarPerm modes [ '755', '644' ]
+272 silly gunzTarPerm extractEntry package.json
+273 silly gunzTarPerm extractEntry package.json
+274 silly gunzTarPerm extractEntry .npmignore
+275 silly gunzTarPerm extractEntry README.md
+276 silly gunzTarPerm extractEntry .npmignore
+277 silly gunzTarPerm extractEntry index.js
+278 silly gunzTarPerm extractEntry _layouts/default.html
+279 silly gunzTarPerm extractEntry code.rb
+280 silly gunzTarPerm extractEntry .travis.yml
+281 silly gunzTarPerm extractEntry History.md
+282 silly gunzTarPerm extractEntry images/gfm.png
+283 silly gunzTarPerm extractEntry stylesheets/screen.css
+284 silly gunzTarPerm extractEntry Makefile
+285 silly gunzTarPerm extractEntry Readme.md
+286 silly gunzTarPerm extractEntry _config.yml
+287 silly gunzTarPerm extractEntry preview.md
+288 silly gunzTarPerm extractEntry sample_content.html
+289 silly gunzTarPerm extractEntry scripts/preview.js
+290 silly gunzTarPerm extractEntry scripts/showdown.js
+291 silly gunzTarPerm extractEntry index.md
+292 silly gunzTarPerm extractEntry lib/commander.js
+293 silly lockFile f57dcd85-dules-dox-node-modules-commander tar:///usr/local/lib/node_modules/dox/node_modules/commander
+294 silly lockFile f57dcd85-dules-dox-node-modules-commander tar:///usr/local/lib/node_modules/dox/node_modules/commander
+295 silly lockFile f858ed14--npm-commander-0-6-1-package-tgz tar:///Users/olivier/.npm/commander/0.6.1/package.tgz
+296 silly lockFile f858ed14--npm-commander-0-6-1-package-tgz tar:///Users/olivier/.npm/commander/0.6.1/package.tgz
+297 info preinstall commander@0.6.1
+298 verbose readDependencies using package.json deps
+299 verbose readDependencies using package.json deps
+300 silly resolved []
+301 verbose about to build /usr/local/lib/node_modules/dox/node_modules/commander
+302 info build /usr/local/lib/node_modules/dox/node_modules/commander
+303 verbose linkStuff [ true,
+303 verbose linkStuff   '/usr/local/lib/node_modules',
+303 verbose linkStuff   false,
+303 verbose linkStuff   '/usr/local/lib/node_modules/dox/node_modules' ]
+304 info linkStuff commander@0.6.1
+305 verbose linkBins commander@0.6.1
+306 verbose linkMans commander@0.6.1
+307 verbose rebuildBundles commander@0.6.1
+308 info install commander@0.6.1
+309 info postinstall commander@0.6.1
+310 silly lockFile 73d80f6b-modules-github-flavored-markdown tar:///usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown
+311 silly lockFile 73d80f6b-modules-github-flavored-markdown tar:///usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown
+312 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+313 silly lockFile 1cc84f35-vored-markdown-1-0-1-package-tgz tar:///Users/olivier/.npm/github-flavored-markdown/1.0.1/package.tgz
+314 info preinstall github-flavored-markdown@1.0.1
+315 verbose readDependencies using package.json deps
+316 verbose readDependencies using package.json deps
+317 silly resolved []
+318 verbose about to build /usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown
+319 info build /usr/local/lib/node_modules/dox/node_modules/github-flavored-markdown
+320 verbose linkStuff [ true,
+320 verbose linkStuff   '/usr/local/lib/node_modules',
+320 verbose linkStuff   false,
+320 verbose linkStuff   '/usr/local/lib/node_modules/dox/node_modules' ]
+321 info linkStuff github-flavored-markdown@1.0.1
+322 verbose linkBins github-flavored-markdown@1.0.1
+323 verbose linkMans github-flavored-markdown@1.0.1
+324 verbose rebuildBundles github-flavored-markdown@1.0.1
+325 info install github-flavored-markdown@1.0.1
+326 info postinstall github-flavored-markdown@1.0.1
+327 verbose about to build /usr/local/lib/node_modules/dox
+328 info build /usr/local/lib/node_modules/dox
+329 verbose linkStuff [ true,
+329 verbose linkStuff   '/usr/local/lib/node_modules',
+329 verbose linkStuff   true,
+329 verbose linkStuff   '/usr/local/lib/node_modules' ]
+330 info linkStuff dox@0.4.4
+331 verbose linkBins dox@0.4.4
+332 verbose link bins [ { dox: './bin/dox' }, '/usr/local/bin', true ]
+333 verbose linkMans dox@0.4.4
+334 verbose rebuildBundles dox@0.4.4
+335 verbose rebuildBundles [ 'commander', 'github-flavored-markdown' ]
+336 info install dox@0.4.4
+337 info postinstall dox@0.4.4
+338 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/bower requires colors@'latest' but will load
+338 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/colors,
+338 warn unmet dependency which is version 0.6.0-1
+339 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/bower requires rimraf@'latest' but will load
+339 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/rimraf,
+339 warn unmet dependency which is version 2.0.2
+340 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/bower requires mkdirp@'latest' but will load
+340 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/mkdirp,
+340 warn unmet dependency which is version 0.3.4
+341 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/bower requires fstream@'latest' but will load
+341 warn unmet dependency /usr/local/lib/node_modules/yeoman/node_modules/fstream,
+341 warn unmet dependency which is version 0.1.19
+342 error peerinvalid The package grunt-cli does not satisfy its siblings' peerDependencies requirements!
+342 error peerinvalid Peer yo@1.0.0-beta.5 wants grunt-cli@~0.1.7
+343 error System Darwin 12.3.0
+344 error command "node" "/usr/local/bin/npm" "install" "-g" "dox"
+345 error cwd /Users/olivier/newlife/doors
+346 error node -v v0.10.20
+347 error npm -v 1.3.11
+348 error code EPEERINVALID
+349 verbose exit [ 1, true ]
