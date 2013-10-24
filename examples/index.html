@@ -32,7 +32,7 @@
 
 	  	if(attr){
 	  		target.classList.toggle("unlock");
-	  		door.unlock(attr, target.classList.contains("unlock"));
+	  		door.toggle(attr, target.classList.contains("unlock"));
 	  		if(!door.open()){
 	  			open.classList.remove("open");
 	  		}
