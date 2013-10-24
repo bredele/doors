@@ -15,7 +15,9 @@
 
 ![Doors](doors.png)
 
-You will find some examples [here](https://github.com/bredele/doors/tree/master/examples).
+You will find some examples [here](https://github.com/bredele/doors/tree/master/examples). Make sure you build the component first.
+
+    $ make
 
 ### The origin
 
