@@ -57,7 +57,6 @@ Doors.prototype.add = function(lock) {
 			var _this = this;
 			key = lock.name;
 			lock.on('open', function() {
-				debugger
 				_this.unlock(key);
 			});
 		}

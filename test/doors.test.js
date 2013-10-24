@@ -180,7 +180,6 @@ describe("Door inception", function() {
     });
     door.unlock('lock1');
     assert(isOpen === true);
-
   });
 
   it('shoud unlock child in parent if child is openned', function() {
@@ -191,16 +190,15 @@ describe("Door inception", function() {
     assert(door.has('lock2') === false);
   });
 
-  // it("should lock child door if locked from parent door", function() {
-  //   var lock = new Doors('github');
-  //   door.add(lock);
-  //   door.unlock('github');
-  //   lock.add('olivier');
-  //   lock.unlock();
-  //   debugger
-  //   door.lock('github');
-  //   assert(lock.has('olivier') === true);
+  it("should lock child door if locked from parent door", function() {
+    var lock = new Doors('lock3');
+    door.add(lock);
+    door.unlock('lock3');
+    lock.add('olivier');
+    lock.unlock();
+    door.lock('lock3');
+    assert(lock.has('olivier') === true);
 
-  // });
+  });
   
 });
