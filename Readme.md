@@ -43,6 +43,7 @@ Additionally, things can change and are not necessarily immutable. A door which 
   - [Doors.unlock()](#doorsunlock)
   - [Doors.toggle()](#doorstogglenamestringboolboolean)
   - [Doors.open()](#doorsopen)
+  - [Doors.on()](#doorson)
 
 ### Doors(key:String, [locks:Array])
 
@@ -104,6 +105,16 @@ Additionally, things can change and are not necessarily immutable. A door which 
   Open the door only if all locks are unlocked.
   and emit open event.
 
+
+### Doors.on(topic:String, callback:Function)
+
+  Listen door events.
+
+```js
+  door.toggle('open', function(){
+    //do something
+  }); 
+```
 
 ## License
 
