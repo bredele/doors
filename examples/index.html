@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Doors</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="example1">
+		<div class="door">
+			<div class="locks">
+				<button data-lock="lock1" class="lock">Lock1</button>
+				<button data-lock="lock2" class="lock">Lock2</button>
+				<button data-lock="lock3" class="lock">Lock3</button>
+			</div>
+		</div>
+	</div>
+	<script src="../build/build.js"></script>
+	<script>
+	  var Doors = require('doors');
+	  var open = document.querySelector('.door');
+
+	  var door = new Doors('door', ['lock1', 'lock2', 'lock3']);
+
+	  door.on('open', function() {
+	  	open.classList.add("open");
+	  });
+
+	  document.querySelector(".locks").addEventListener("click", function(event){
+	  	var target = event.target,
+	  		attr = target.getAttribute("data-lock");
+
+	  	if(attr){
+	  		target.classList.toggle("unlock");
+	  		door.unlock(attr, target.classList.contains("unlock"));
+	  		if(!door.open()){
+	  			open.classList.remove("open");
+	  		}
+	  	}
+	  });
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+body {
+	margin-left:100px;
+}
+
+button {
+	border:0;
+	color:white;
+	font-weight: bold;
+	width:44px; height: 20px;
+	cursor: pointer;
+}
+.door {
+	position:relative;
+	border:3px solid red;
+	width:300px; height:600px;
+}
+
+.door.open {
+	border:3px solid green;
+}
+
+
+.locks {
+	position:absolute;
+	top:175px; width:44px;
+	right:-24px;
+}
+
+.lock {
+	margin-bottom:100px;
+	background:red;
+}
+.unlock {
+	background:green;
+}
