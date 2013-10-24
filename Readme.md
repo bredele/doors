@@ -9,6 +9,9 @@
 
     $ component install bredele/doors
 
+## What is the door pattern?
+  
+![Doors](doors.png)
 
 
 
