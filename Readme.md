@@ -25,7 +25,7 @@
   an optional array of locks.
 
 ```js
-	var Doors = require('doors');
+  var Doors = require('doors');
   var door = new Doors('github');
 ```
 
