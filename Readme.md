@@ -9,6 +9,8 @@
 
     $ component install bredele/doors
 
+  Here's a standalone version of [doors](https://github.com/bredele/doors/blob/master/doors.js):
+
 ## What is the door pattern?
 
 ![Doors](doors.png)
