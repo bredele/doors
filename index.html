@@ -11,20 +11,32 @@
     <![endif]-->
   </head>
   <body>
-    <header class="header"></header>
-    <div class="door close"></div>
-    <div class="locks-panel">
-      <div class="locks" data-list="each:" data-event="delegate:.switch,click,toggle">
-        <p>
-            <input type="radio" name="{name}" id="u{name}" value="1" hidden >
-            <label for="u{name}" class="switch on">Unlock</label>
+    <header class="header">
+      <h1 class="title">Door pattern</h1>
+      by <a href="http://github.com/bredele">@bredele</a>
+    </header>
+    <div class="content">
+      <div class="door close"></div>
+      <div class="locks-panel">
+        <div class="locks" data-list="each:" data-event="delegate:.switch,click,toggle">
+          <p>
+              <input type="radio" name="{name}" id="u{name}" value="1" hidden >
+              <label for="u{name}" class="switch on">Unlock</label>
 
-            <input type="radio" name="{name}" id="l{name}" value="0" hidden checked>
-            <label for="l{name}" class="switch off">Lock</label>
-        </p>
+              <input type="radio" name="{name}" id="l{name}" value="0" hidden checked>
+              <label for="l{name}" class="switch off">Lock</label>
+          </p>
+        </div>
+        <span class="btn" data-event="on:click,add">Add lock</span>
       </div>
-      <span class="btn" data-event="on:click,add">Add lock</span>
     </div>
+    <footer class="footer">
+      <a href="https://twitter.com/bredeleca" class="twitter-follow-button" data-show-count="false">Follow @bredeleca</a>
+      <iframe src="http://ghbtns.com/github-btn.html?user=bredele&repo=doors&type=watch&count=true"
+  allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=bredele&repo=doors&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
+    </footer>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     <script src="./build/build.js"></script>
     <script>
     require('demo');

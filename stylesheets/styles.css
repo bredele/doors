@@ -19,6 +19,7 @@ body {
   font-size: 1.4em /* equiv 14px */;
   line-height: 1.5;
   height: 100%;
+  display: table;
 }
 
 * {
@@ -34,11 +35,32 @@ ul {
 
 a {
   text-decoration: none;
+    color: white;
 }
 
 .header {
   background: #42403D;
-  height: 40%;
+  height: 340px;
+  display:table-row;
+  text-align: center;
+}
+
+.content {
+  display:table-row;
+}
+.footer { 
+  display : table-row;
+  height: 30px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  color:white;
+}
+
+.twitter-follow-button {
+  margin-right: 20px;
 }
 
 .door, .locks-panel {
@@ -48,16 +70,23 @@ a {
 }
 
 
+.locks {
+  margin-bottom: 30px;
+}
+
 .door {
   background: #7eab55;
   margin:auto;
   width: 200px;
   height: 300px;
   cursor: pointer;
+/*  -webkit-transform-origin: left;*/
 }
 
 .door.close {
   background: #dd4a38;
+/*  -webkit-transform: rotateY(-90deg);
+  transition: -webkit-transform .5s linear*/
 }
 
 .door:after {
@@ -98,7 +127,7 @@ input[type="radio"]:checked + .off {
 }
 
 .btn {
-  background-color: #9E6138;
+  background-color:#42403D;
   border-radius: 3px;
   border:0;
   padding:.5em 1em;
