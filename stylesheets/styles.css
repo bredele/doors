@@ -100,6 +100,14 @@ a {
   border-radius: 50%;
 }
 
+.status {
+  color:white;
+  top: 138px;
+  left:55px;
+  position: relative;
+  font-weight: 600;
+}
+
 .switch {
   color: #6f839a;
   cursor: pointer;

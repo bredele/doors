@@ -9,18 +9,21 @@ var View = require('view'),
 
 var locks = new Door('demo', ['l1', 'l2']);
 var door = query('.door');
+var status = query('.status');
 
 
 function closeDoor(){
 	if(locks.keys.length === 0) {
 		classes(door).remove('close');
+		status.innerText = 'Open';
 	} else {
 		classes(door).add('close');
+		status.innerText = 'Close';
 	}
 }
 
 locks.on('open', function(){
-	classes(door).remove('close');
+	closeDoor();
 });
 
 

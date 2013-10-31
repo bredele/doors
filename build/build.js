@@ -1805,18 +1805,21 @@ var View = require('view'),\n\
 \n\
 var locks = new Door('demo', ['l1', 'l2']);\n\
 var door = query('.door');\n\
+var status = query('.status');\n\
 \n\
 \n\
 function closeDoor(){\n\
 \tif(locks.keys.length === 0) {\n\
 \t\tclasses(door).remove('close');\n\
+\t\tstatus.innerText = 'Open';\n\
 \t} else {\n\
 \t\tclasses(door).add('close');\n\
+\t\tstatus.innerText = 'Close';\n\
 \t}\n\
 }\n\
 \n\
 locks.on('open', function(){\n\
-\tclasses(door).remove('close');\n\
+\tcloseDoor();\n\
 });\n\
 \n\
 \n\
