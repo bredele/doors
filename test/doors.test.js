@@ -73,22 +73,25 @@ describe("Unlock", function() {
     assert(contains(door.keys, 'amy') === false);
   });
 
-  it('should emit an open event if the every locks are unlocked', function() {
-    var isOpen = false;
-    door.add('amy');
-    door.on('open', function() {
-      isOpen = true;
-    });
-    door.unlock();
-    assert(isOpen === true);
-  });
-
   it('should not unlock an unknown lock', function() {
     door.add('amy');
     door.unlock('bruno');
     assert(contains(door.keys, 'olivier') === true);
     assert(contains(door.keys, 'amy') === true);
   });
+
+  describe("open event", function() {
+    it('should emit an open event if the every locks are unlocked', function() {
+      var isOpen = false;
+      door.add('amy');
+      door.on('open', function() {
+        isOpen = true;
+      });
+      door.unlock();
+      assert(isOpen === true);
+    });
+  });
+  
 
 });
 
@@ -127,6 +130,32 @@ describe("Lock", function() {
     assert(contains(door.keys, 'olivier') === true);
     assert(contains(door.keys, 'amy') === true);
   });
+
+  // describe("close event", function() {
+  //   it("should emit a close event on lock if the door is opened", function() {
+  //     var isClosed = false;
+  //     door.unlock();
+  //     door.on('close', function(){
+  //       isClosed = true;
+  //     });
+  //     door.lock('olivier');
+  //     assert(isClosed === true);
+  //   });
+
+  //   it('should only emit one close event once the door is locked', function(){
+  //     var isClosed = 0;
+  //     door.unlock();
+  //     door.on('close', function(){
+  //       ++isClosed;
+  //     });
+  //     door.lock('olivier');
+  //     door.lock('amy');
+  //     assert(isClosed === 1);
+  //   });
+    
+  // });
+  
+
 });
 
 
@@ -167,7 +196,7 @@ describe("Door inception", function() {
   it("should add a door", function() {
     var lock = new Doors('github');
     door.add(lock);
-    assert(door.has('github') === true);
+    assert(has(door.locks, 'github') === true);
   });
 
   it("should unlock child door if unlocked from parent door", function() {
@@ -192,6 +221,7 @@ describe("Door inception", function() {
 
   it("should lock child door if locked from parent door", function() {
     var lock = new Doors('lock3');
+    debugger
     door.add(lock);
     door.unlock('lock3');
     lock.add('olivier');
@@ -199,6 +229,16 @@ describe("Door inception", function() {
     door.lock('lock3');
     assert(lock.has('olivier') === true);
 
+  });
+
+  it('shoud lock child in parent if child is closed', function() {
+    var lock = new Doors('lock2');
+    lock.add('olivier');
+    lock.unlock();
+
+    door.add(lock);
+    lock.lock();
+    assert(door.has('lock2') === true);
   });
   
 });
