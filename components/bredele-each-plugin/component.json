@@ -1,0 +1,20 @@
+{
+  "name": "each-plugin",
+  "repo": "bredele/each-plugin",
+  "description": "",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "bredele/data-binding": "*",
+    "bredele/store": "*"
+  },
+  "development": {
+    "component/assert": "*",
+    "bredele/view": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

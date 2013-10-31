@@ -1,0 +1,19 @@
+{
+  "name": "interpolation",
+  "repo": "bredele/interpolation",
+  "description": "Interpolation on string",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/indexof": "*",
+    "bredele/trim": "*"
+  },
+  "development": {
+    "component/assert": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "demo",
+  "repo": "bredele/demo",
+  "description": "door demo",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "bredele/doors": "*",
+    "bredele/view": "*",
+    "bredele/store": "*",
+    "bredele/event-plugin": "*",
+    "bredele/each-plugin": "*"
+  },
+  "development": {
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "remotes": []
+}

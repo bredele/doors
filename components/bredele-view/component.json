@@ -1,0 +1,19 @@
+{
+  "name": "view",
+  "repo": "bredele/view",
+  "description": "Data binding wrapper",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "bredele/data-binding": "*",
+    "bredele/store": "*"
+  },
+  "development": {
+    "component/assert": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

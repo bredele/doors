@@ -1,0 +1,21 @@
+{
+  "name": "data-binding",
+  "repo": "bredele/data-binding",
+  "description": "Data attribute binding and interpolation",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "bredele/store": "*",
+    "bredele/node-substitution": "*",
+    "component/indexof": "*"
+  },
+  "development": {
+    "component/assert": "*",
+    "component/domify": "1.0.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

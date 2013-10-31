@@ -1,0 +1,22 @@
+{
+  "name": "doors",
+  "repo": "bredele/doors",
+  "description": "door pattern",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/emitter": "*",
+    "component/indexof": "*"
+  },
+  "development": {
+    "component/assert": "*",
+    "leafs/array-contains": "*",
+    "leafs/array-count": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ],
+  "remotes": []
+}

@@ -1,0 +1,16 @@
+{
+  "name": "each",
+  "repo": "bredele/each",
+  "description": "Iteration utility",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {},
+  "development": {
+    "component/assert": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}

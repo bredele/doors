@@ -1,0 +1,20 @@
+{
+  "name": "event-plugin",
+  "repo": "bredele/event-plugin",
+  "description": "Event plugin",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/event": "*",
+    "component/delegate": "*"
+  },
+  "development": {
+    "bredele/interpolation": "*",
+    "component/assert": "*"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
