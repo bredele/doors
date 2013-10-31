@@ -9,10 +9,11 @@
     "bredele/view": "*",
     "bredele/store": "*",
     "bredele/event-plugin": "*",
-    "bredele/each-plugin": "*"
+    "bredele/each-plugin": "*",
+    "component/classes": "*",
+    "component/query": "*"
   },
-  "development": {
-  },
+  "development": {},
   "license": "MIT",
   "main": "index.js",
   "scripts": [

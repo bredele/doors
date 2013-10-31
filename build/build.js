@@ -1274,30 +1274,6 @@ exports.unbind = function(el, type, fn, capture){\n\
 };\n\
 //@ sourceURL=component-event/index.js"
 ));
-require.register("component-query/index.js", Function("exports, require, module",
-"\n\
-function one(selector, el) {\n\
-  return el.querySelector(selector);\n\
-}\n\
-\n\
-exports = module.exports = function(selector, el){\n\
-  el = el || document;\n\
-  return one(selector, el);\n\
-};\n\
-\n\
-exports.all = function(selector, el){\n\
-  el = el || document;\n\
-  return el.querySelectorAll(selector);\n\
-};\n\
-\n\
-exports.engine = function(obj){\n\
-  if (!obj.one) throw new Error('.one callback required');\n\
-  if (!obj.all) throw new Error('.all callback required');\n\
-  one = obj.one;\n\
-  exports.all = obj.all;\n\
-};\n\
-//@ sourceURL=component-query/index.js"
-));
 require.register("component-matches-selector/index.js", Function("exports, require, module",
 "/**\n\
  * Module dependencies.\n\
@@ -1625,28 +1601,222 @@ ItemRenderer.prototype.reset = function(data) {\n\
 \n\
 //@ sourceURL=bredele-each-plugin/index.js"
 ));
+require.register("component-classes/index.js", Function("exports, require, module",
+"/**\n\
+ * Module dependencies.\n\
+ */\n\
+\n\
+var index = require('indexof');\n\
+\n\
+/**\n\
+ * Whitespace regexp.\n\
+ */\n\
+\n\
+var re = /\\s+/;\n\
+\n\
+/**\n\
+ * toString reference.\n\
+ */\n\
+\n\
+var toString = Object.prototype.toString;\n\
+\n\
+/**\n\
+ * Wrap `el` in a `ClassList`.\n\
+ *\n\
+ * @param {Element} el\n\
+ * @return {ClassList}\n\
+ * @api public\n\
+ */\n\
+\n\
+module.exports = function(el){\n\
+  return new ClassList(el);\n\
+};\n\
+\n\
+/**\n\
+ * Initialize a new ClassList for `el`.\n\
+ *\n\
+ * @param {Element} el\n\
+ * @api private\n\
+ */\n\
+\n\
+function ClassList(el) {\n\
+  if (!el) throw new Error('A DOM element reference is required');\n\
+  this.el = el;\n\
+  this.list = el.classList;\n\
+}\n\
+\n\
+/**\n\
+ * Add class `name` if not already present.\n\
+ *\n\
+ * @param {String} name\n\
+ * @return {ClassList}\n\
+ * @api public\n\
+ */\n\
+\n\
+ClassList.prototype.add = function(name){\n\
+  // classList\n\
+  if (this.list) {\n\
+    this.list.add(name);\n\
+    return this;\n\
+  }\n\
+\n\
+  // fallback\n\
+  var arr = this.array();\n\
+  var i = index(arr, name);\n\
+  if (!~i) arr.push(name);\n\
+  this.el.className = arr.join(' ');\n\
+  return this;\n\
+};\n\
+\n\
+/**\n\
+ * Remove class `name` when present, or\n\
+ * pass a regular expression to remove\n\
+ * any which match.\n\
+ *\n\
+ * @param {String|RegExp} name\n\
+ * @return {ClassList}\n\
+ * @api public\n\
+ */\n\
+\n\
+ClassList.prototype.remove = function(name){\n\
+  if ('[object RegExp]' == toString.call(name)) {\n\
+    return this.removeMatching(name);\n\
+  }\n\
+\n\
+  // classList\n\
+  if (this.list) {\n\
+    this.list.remove(name);\n\
+    return this;\n\
+  }\n\
+\n\
+  // fallback\n\
+  var arr = this.array();\n\
+  var i = index(arr, name);\n\
+  if (~i) arr.splice(i, 1);\n\
+  this.el.className = arr.join(' ');\n\
+  return this;\n\
+};\n\
+\n\
+/**\n\
+ * Remove all classes matching `re`.\n\
+ *\n\
+ * @param {RegExp} re\n\
+ * @return {ClassList}\n\
+ * @api private\n\
+ */\n\
+\n\
+ClassList.prototype.removeMatching = function(re){\n\
+  var arr = this.array();\n\
+  for (var i = 0; i < arr.length; i++) {\n\
+    if (re.test(arr[i])) {\n\
+      this.remove(arr[i]);\n\
+    }\n\
+  }\n\
+  return this;\n\
+};\n\
+\n\
+/**\n\
+ * Toggle class `name`.\n\
+ *\n\
+ * @param {String} name\n\
+ * @return {ClassList}\n\
+ * @api public\n\
+ */\n\
+\n\
+ClassList.prototype.toggle = function(name){\n\
+  // classList\n\
+  if (this.list) {\n\
+    this.list.toggle(name);\n\
+    return this;\n\
+  }\n\
+\n\
+  // fallback\n\
+  if (this.has(name)) {\n\
+    this.remove(name);\n\
+  } else {\n\
+    this.add(name);\n\
+  }\n\
+  return this;\n\
+};\n\
+\n\
+/**\n\
+ * Return an array of classes.\n\
+ *\n\
+ * @return {Array}\n\
+ * @api public\n\
+ */\n\
+\n\
+ClassList.prototype.array = function(){\n\
+  var str = this.el.className.replace(/^\\s+|\\s+$/g, '');\n\
+  var arr = str.split(re);\n\
+  if ('' === arr[0]) arr.shift();\n\
+  return arr;\n\
+};\n\
+\n\
+/**\n\
+ * Check if class `name` is present.\n\
+ *\n\
+ * @param {String} name\n\
+ * @return {ClassList}\n\
+ * @api public\n\
+ */\n\
+\n\
+ClassList.prototype.has =\n\
+ClassList.prototype.contains = function(name){\n\
+  return this.list\n\
+    ? this.list.contains(name)\n\
+    : !! ~index(this.array(), name);\n\
+};\n\
+//@ sourceURL=component-classes/index.js"
+));
+require.register("component-query/index.js", Function("exports, require, module",
+"\n\
+function one(selector, el) {\n\
+  return el.querySelector(selector);\n\
+}\n\
+\n\
+exports = module.exports = function(selector, el){\n\
+  el = el || document;\n\
+  return one(selector, el);\n\
+};\n\
+\n\
+exports.all = function(selector, el){\n\
+  el = el || document;\n\
+  return el.querySelectorAll(selector);\n\
+};\n\
+\n\
+exports.engine = function(obj){\n\
+  if (!obj.one) throw new Error('.one callback required');\n\
+  if (!obj.all) throw new Error('.all callback required');\n\
+  one = obj.one;\n\
+  exports.all = obj.all;\n\
+};\n\
+//@ sourceURL=component-query/index.js"
+));
 require.register("demo/index.js", Function("exports, require, module",
 "\n\
 var View = require('view'),\n\
 \t\tDoor = require('doors'),\n\
 \t\tStore = require('store'),\n\
 \t\tEachPlugin = require('each-plugin'),\n\
-\t\tEventPlugin = require('event-plugin');\n\
+\t\tEventPlugin = require('event-plugin'),\n\
+\t\tquery = require('query'),\n\
+\t\tclasses = require('classes');\n\
 \n\
 var locks = new Door('demo', ['l1', 'l2']);\n\
-var door = document.querySelector('.door');\n\
+var door = query('.door');\n\
 \n\
 \n\
 function closeDoor(){\n\
 \tif(locks.keys.length === 0) {\n\
-\t\tdoor.classList.remove('close');\n\
+\t\tclasses(door).remove('close');\n\
 \t} else {\n\
-\t\tdoor.classList.add('close');\n\
+\t\tclasses(door).add('close');\n\
 \t}\n\
 }\n\
 \n\
 locks.on('open', function(){\n\
-\tdoor.classList.remove('close');\n\
+\tclasses(door).remove('close');\n\
 });\n\
 \n\
 \n\
@@ -1675,13 +1845,15 @@ view.plugin('event', new EventPlugin({\n\
 \t\tvar target = el.target,\n\
 \t\t\t\tname = target.getAttribute('for').substring(1);\n\
 \n\
-\t\tlocks.toggle(name, target.classList.contains('on'));\n\
+\t\tlocks.toggle(name, classes(target).has('on'));\n\
 \t\tcloseDoor();\n\
 \t}\n\
 }));\n\
-view.alive(document.querySelector('.locks-panel'));\n\
+view.alive(query('.locks-panel'));\n\
 //@ sourceURL=demo/index.js"
 ));
+
+
 
 
 
@@ -1851,4 +2023,11 @@ require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
 require.alias("bredele-clone/index.js", "bredele-clone/index.js");
 require.alias("bredele-store/index.js", "bredele-store/index.js");
 require.alias("bredele-each-plugin/index.js", "bredele-each-plugin/index.js");
+require.alias("component-classes/index.js", "demo/deps/classes/index.js");
+require.alias("component-classes/index.js", "classes/index.js");
+require.alias("component-indexof/index.js", "component-classes/deps/indexof/index.js");
+
+require.alias("component-query/index.js", "demo/deps/query/index.js");
+require.alias("component-query/index.js", "query/index.js");
+
 require.alias("demo/index.js", "demo/index.js");

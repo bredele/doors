@@ -3,22 +3,24 @@ var View = require('view'),
 		Door = require('doors'),
 		Store = require('store'),
 		EachPlugin = require('each-plugin'),
-		EventPlugin = require('event-plugin');
+		EventPlugin = require('event-plugin'),
+		query = require('query'),
+		classes = require('classes');
 
 var locks = new Door('demo', ['l1', 'l2']);
-var door = document.querySelector('.door');
+var door = query('.door');
 
 
 function closeDoor(){
 	if(locks.keys.length === 0) {
-		door.classList.remove('close');
+		classes(door).remove('close');
 	} else {
-		door.classList.add('close');
+		classes(door).add('close');
 	}
 }
 
 locks.on('open', function(){
-	door.classList.remove('close');
+	classes(door).remove('close');
 });
 
 
@@ -47,8 +49,8 @@ view.plugin('event', new EventPlugin({
 		var target = el.target,
 				name = target.getAttribute('for').substring(1);
 
-		locks.toggle(name, target.classList.contains('on'));
+		locks.toggle(name, classes(target).has('on'));
 		closeDoor();
 	}
 }));
-view.alive(document.querySelector('.locks-panel'));
+view.alive(query('.locks-panel'));
