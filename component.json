@@ -8,6 +8,7 @@
     "bredele/doors": "*",
     "bredele/view": "*",
     "bredele/store": "*",
+    "bredele/stack": "*",
     "bredele/event-plugin": "*",
     "bredele/each-plugin": "*",
     "component/classes": "*",
@@ -16,8 +17,13 @@
   "development": {},
   "license": "MIT",
   "main": "index.js",
+  "templates" : [
+    "javascripts/demo2.html"
+  ],
   "scripts": [
-    "index.js"
+    "index.js",
+    "javascripts/demo1.js",
+    "javascripts/demo2.js"
   ],
   "remotes": []
 }

@@ -1,59 +1,37 @@
 
+/**
+ * Dependencies
+ */
+
 var View = require('view'),
-		Door = require('doors'),
-		Store = require('store'),
-		EachPlugin = require('each-plugin'),
-		EventPlugin = require('event-plugin'),
+		Stack = require('stack'),
+		Listener = require('event-plugin'),
 		query = require('query'),
 		classes = require('classes');
 
-var locks = new Door('demo', ['l1', 'l2']);
-var door = query('.door');
-var status = query('.status');
+
+//declare stack
+
+var stack = new Stack(query('.content'));
 
 
-function closeDoor(){
-	if(locks.keys.length === 0) {
-		classes(door).remove('close');
-		status.innerText = 'Open';
-	} else {
-		classes(door).add('close');
-		status.innerText = 'Close';
-	}
-}
-
-locks.on('open', function(){
-	closeDoor();
-});
-
-
-var store = new Store([{
-	name:'l1'
-}, {
-	name: 'l2'
-}]);
-
+//declare view
 
 var view = new View();
-view.plugin('list', new EachPlugin(store));
-view.plugin('event', new EventPlugin({
-	add: function(){
-		var length = store.data.length,
-				name = 'l'+(length + 1);
-
-		store.set(length, {
-			name: name
-		});
-
-		locks.add(name);
-		closeDoor();
-	},
-	toggle: function(el, node){
-		var target = el.target,
-				name = target.getAttribute('for').substring(1);
-
-		locks.toggle(name, classes(target).has('on'));
-		closeDoor();
+view.plugin('event', new Listener({
+	switch: function(ev){
+		if(classes(ev.target).has('btn-demo1')) {
+			stack.show('demo1');
+		} else {
+			stack.show('demo2');
+		}
 	}
 }));
-view.alive(query('.locks-panel'));
+view.alive( query('.header'));
+
+
+//initialize stack
+
+stack.add('demo1', require('./javascripts/demo1'));
+stack.add('demo2', require('./javascripts/demo2'));
+stack.show('demo1');

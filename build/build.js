@@ -1231,6 +1231,79 @@ Store.prototype.toJSON = function() {\n\
   return JSON.stringify(this.data);\n\
 };//@ sourceURL=bredele-store/index.js"
 ));
+require.register("bredele-stack/index.js", Function("exports, require, module",
+"\n\
+/**\n\
+ * Expose 'Stack'\n\
+ */\n\
+\n\
+module.exports = Stack;\n\
+\n\
+\n\
+/**\n\
+ * Initialize a new Stack\n\
+ *\n\
+ * @param {DomElement} parent the DOM element to stack\n\
+ * @param {DomElement} doc optional document's fragment parent\n\
+ * @api public\n\
+ */\n\
+\n\
+function Stack(parent, doc) {\n\
+  this.parent = parent;\n\
+  this.fragment = document.createDocumentFragment();\n\
+  this.directory = [];\n\
+  this.current = null;\n\
+}\n\
+\n\
+\n\
+/**\n\
+ * Add dom in stack.\n\
+ *\n\
+ * @param {String} [name] dom name\n\
+ * @param {DomElement} [el] dom element\n\
+ * @api public\n\
+ */\n\
+\n\
+Stack.prototype.add = function(name, dom) {\n\
+  this.directory.push(name);\n\
+  this.fragment.appendChild(dom);\n\
+};\n\
+\n\
+\n\
+/**\n\
+ * Set visible element from stack.\n\
+ *\n\
+ * @param {String} [name] dom name\n\
+ * @api public\n\
+ */\n\
+\n\
+Stack.prototype.show = function( name ) {\n\
+  var index = this.directory.indexOf(name);\n\
+  if(index > -1) {\n\
+    var dom = this.fragment.childNodes[index];\n\
+    this.parent.appendChild(dom);\n\
+    this.directory.splice(index, 1);\n\
+\n\
+    if(this.current) {\n\
+      this.add(this.current[0], this.current[1]);\n\
+    }\n\
+\n\
+    this.current = [name, dom];\n\
+  }\n\
+};\n\
+\n\
+\n\
+/**\n\
+ * Set stack parent.\n\
+ *\n\
+ * @param {DomElement} [el] dom element\n\
+ * @api public\n\
+ */\n\
+\n\
+Stack.prototype.parent = function( el ) {\n\
+  this.parent = el;\n\
+};//@ sourceURL=bredele-stack/index.js"
+));
 require.register("component-event/index.js", Function("exports, require, module",
 "\n\
 /**\n\
@@ -1795,6 +1868,39 @@ exports.engine = function(obj){\n\
 ));
 require.register("demo/index.js", Function("exports, require, module",
 "\n\
+/**\n\
+ * Dependencies\n\
+ */\n\
+\n\
+var View = require('view'),\n\
+\t\tStack = require('stack'),\n\
+\t\tListener = require('event-plugin'),\n\
+\t\tquery = require('query'),\n\
+\t\tclasses = require('classes');\n\
+\n\
+//declare stack\n\
+var stack = new Stack(query('.content'));\n\
+\n\
+//declare view\n\
+var view = new View();\n\
+view.plugin('event', new Listener({\n\
+\tswitch: function(ev){\n\
+\t\tif(classes(ev.target).has('btn-demo1')) {\n\
+\t\t\tstack.show('demo1');\n\
+\t\t} else {\n\
+\t\t\tstack.show('demo2');\n\
+\t\t}\n\
+\t}\n\
+}));\n\
+view.alive( query('.header'));\n\
+\n\
+//initialize stack\n\
+stack.add('demo1', require('./javascripts/demo1'));\n\
+stack.add('demo2', require('./javascripts/demo2'));\n\
+stack.show('demo1');//@ sourceURL=demo/index.js"
+));
+require.register("demo/javascripts/demo1.js", Function("exports, require, module",
+"\n\
 var View = require('view'),\n\
 \t\tDoor = require('doors'),\n\
 \t\tStore = require('store'),\n\
@@ -1853,7 +1959,26 @@ view.plugin('event', new EventPlugin({\n\
 \t}\n\
 }));\n\
 view.alive(query('.locks-panel'));\n\
-//@ sourceURL=demo/index.js"
+\n\
+module.exports = query('.demo1');//@ sourceURL=demo/javascripts/demo1.js"
+));
+require.register("demo/javascripts/demo2.js", Function("exports, require, module",
+"\n\
+/**\n\
+ * Dependencies\n\
+ */\n\
+\n\
+var View = require('view'),\n\
+\t\ttmpl = require('./demo2.html');\n\
+\n\
+\n\
+//declare view\n\
+\n\
+var view = new View();\n\
+view.template(tmpl);\n\
+view.alive();\n\
+\n\
+module.exports = view.dom;//@ sourceURL=demo/javascripts/demo2.js"
 ));
 
 
@@ -1867,6 +1992,22 @@ view.alive(query('.locks-panel'));\n\
 
 
 
+
+require.register("demo/javascripts/demo2.html", Function("exports, require, module",
+"module.exports = '<div class=\"demo2\">\\n\
+\t<form>\\n\
+\t\t<p>\\n\
+\t\t\t<input type=\"text\">\\n\
+\t\t</p>\\n\
+\t\t<p>\\n\
+\t\t\t<input type=\"password\">\\n\
+\t\t</p>\\n\
+\t\t<p>\\n\
+\t\t\t<button></button>\\n\
+\t\t</p>\\n\
+\t</form>\\n\
+</div>';//@ sourceURL=demo/javascripts/demo2.html"
+));
 require.alias("bredele-doors/index.js", "demo/deps/doors/index.js");
 require.alias("bredele-doors/index.js", "demo/deps/doors/index.js");
 require.alias("bredele-doors/index.js", "doors/index.js");
@@ -1950,6 +2091,10 @@ require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
 require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
 require.alias("bredele-clone/index.js", "bredele-clone/index.js");
 require.alias("bredele-store/index.js", "bredele-store/index.js");
+require.alias("bredele-stack/index.js", "demo/deps/stack/index.js");
+require.alias("bredele-stack/index.js", "demo/deps/stack/index.js");
+require.alias("bredele-stack/index.js", "stack/index.js");
+require.alias("bredele-stack/index.js", "bredele-stack/index.js");
 require.alias("bredele-event-plugin/index.js", "demo/deps/event-plugin/index.js");
 require.alias("bredele-event-plugin/index.js", "demo/deps/event-plugin/index.js");
 require.alias("bredele-event-plugin/index.js", "event-plugin/index.js");

@@ -143,3 +143,19 @@ input[type="radio"]:checked + .off {
   cursor: pointer;
   font-weight: 600;
 }
+
+.demo-btn {
+  border:2px solid grey;
+  background:transparent;
+  border-radius: 3px;
+  padding: .5em 1em;
+  color: white;
+  cursor:pointer;
+  font-weight: 600;
+}
+
+.demo-btn.active {
+  border-color:white;
+  background: white;
+  color:#42403D;
+}

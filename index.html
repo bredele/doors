@@ -14,22 +14,28 @@
     <header class="header">
       <h1 class="title">Door pattern</h1>
       by <a href="http://github.com/bredele" target="_blank">@bredele</a>
+      <p data-event="delegate:.demo-btn,click,switch">
+        <button class="demo-btn btn-demo1 active">Demo 1</button>
+        <button class="demo-btn">Demo 2</button>
+      </p>
     </header>
     <div class="content">
-      <div class="door close">
-        <span class="status">Close</span>
-      </div>
-      <div class="locks-panel">
-        <div class="locks" data-list="each:" data-event="delegate:.switch,click,toggle">
-          <p>
-              <input type="radio" name="{name}" id="u{name}" value="1" hidden >
-              <label for="u{name}" class="switch on">Unlock</label>
-
-              <input type="radio" name="{name}" id="l{name}" value="0" hidden checked>
-              <label for="l{name}" class="switch off">Lock</label>
-          </p>
+      <div class="demo1">
+        <div class="door close">
+          <span class="status">Close</span>
         </div>
-        <span class="btn" data-event="on:click,add">Add lock</span>
+        <div class="locks-panel">
+          <div class="locks" data-list="each:" data-event="delegate:.switch,click,toggle">
+            <p>
+                <input type="radio" name="{name}" id="u{name}" value="1" hidden >
+                <label for="u{name}" class="switch on">Unlock</label>
+
+                <input type="radio" name="{name}" id="l{name}" value="0" hidden checked>
+                <label for="l{name}" class="switch off">Lock</label>
+            </p>
+          </div>
+          <span class="btn" data-event="on:click,add">Add lock</span>
+        </div>
       </div>
     </div>
     <footer class="footer">
