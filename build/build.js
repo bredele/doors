@@ -1878,23 +1878,39 @@ var View = require('view'),\n\
 \t\tquery = require('query'),\n\
 \t\tclasses = require('classes');\n\
 \n\
+\n\
 //declare stack\n\
+\n\
 var stack = new Stack(query('.content'));\n\
 \n\
+\n\
 //declare view\n\
+\n\
+var current = query('.demo-btn.active'); //this is shit\n\
 var view = new View();\n\
 view.plugin('event', new Listener({\n\
 \tswitch: function(ev){\n\
-\t\tif(classes(ev.target).has('btn-demo1')) {\n\
+\t\tvar node = ev.target,\n\
+\t\t\t\tclassList = classes(node);\n\
+\n\
+\t\tif(classList.has('btn-demo1')) {\n\
 \t\t\tstack.show('demo1');\n\
 \t\t} else {\n\
 \t\t\tstack.show('demo2');\n\
 \t\t}\n\
+\n\
+\t\tif(!current.isEqualNode(node)) {\n\
+\t\t\tclasses(current).remove('active');\n\
+\t\t\tclassList.add('active');\n\
+\t\t}\n\
+\t\tcurrent = node;\n\
 \t}\n\
 }));\n\
 view.alive( query('.header'));\n\
 \n\
+\n\
 //initialize stack\n\
+\n\
 stack.add('demo1', require('./javascripts/demo1'));\n\
 stack.add('demo2', require('./javascripts/demo2'));\n\
 stack.show('demo1');//@ sourceURL=demo/index.js"

@@ -63,7 +63,7 @@ a {
   margin-right: 20px;
 }
 
-.door, .locks-panel {
+.door, .locks-panel, .demo2{
   position:relative;
   bottom:150px;
   text-align: center;

@@ -17,14 +17,25 @@ var stack = new Stack(query('.content'));
 
 //declare view
 
+var current = query('.demo-btn.active'); //this is shit
 var view = new View();
 view.plugin('event', new Listener({
 	switch: function(ev){
-		if(classes(ev.target).has('btn-demo1')) {
+		var node = ev.target,
+				classList = classes(node);
+
+		if(classList.has('btn-demo1')) {
 			stack.show('demo1');
 		} else {
 			stack.show('demo2');
 		}
+
+		//do a control plugin
+		if(!current.isEqualNode(node)) {
+			classes(current).remove('active');
+			classList.add('active');
+		}
+		current = node;
 	}
 }));
 view.alive( query('.header'));
