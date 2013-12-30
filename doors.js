@@ -203,12 +203,6 @@ require.relative = function(parent) {
 require.register("component-emitter/index.js", function(exports, require, module){
 
 /**
- * Module dependencies.
- */
-
-var index = require('indexof');
-
-/**
  * Expose `Emitter`.
  */
 
@@ -275,7 +269,7 @@ Emitter.prototype.once = function(event, fn){
     fn.apply(this, arguments);
   }
 
-  fn._off = on;
+  on.fn = fn;
   this.on(event, on);
   return this;
 };
@@ -313,8 +307,14 @@ Emitter.prototype.removeEventListener = function(event, fn){
   }
 
   // remove specific handler
-  var i = index(callbacks, fn._off || fn);
-  if (~i) callbacks.splice(i, 1);
+  var cb;
+  for (var i = 0; i < callbacks.length; i++) {
+    cb = callbacks[i];
+    if (cb === fn || cb.fn === fn) {
+      callbacks.splice(i, 1);
+      break;
+    }
+  }
   return this;
 };
 
@@ -545,7 +545,6 @@ Doors.prototype.open = function() {
 
 require.alias("component-emitter/index.js", "doors/deps/emitter/index.js");
 require.alias("component-emitter/index.js", "emitter/index.js");
-require.alias("component-indexof/index.js", "component-emitter/deps/indexof/index.js");
 
 require.alias("component-indexof/index.js", "doors/deps/indexof/index.js");
 require.alias("component-indexof/index.js", "indexof/index.js");
@@ -555,5 +554,5 @@ require.alias("doors/index.js", "doors/index.js");if (typeof exports == "object"
 } else if (typeof define == "function" && define.amd) {
   define(function(){ return require("doors"); });
 } else {
-  this["doors.js"] = require("doors");
+  this["doors"] = require("doors");
 }})();
