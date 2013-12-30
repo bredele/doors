@@ -159,3 +159,14 @@ input[type="radio"]:checked + .off {
   background: white;
   color:#42403D;
 }
+
+
+input {
+  background:transparent;
+  color:white;
+  outline:0;
+  border:2px solid grey;
+  line-height: 30px;
+  padding:0 10px;
+  width:300px;
+}

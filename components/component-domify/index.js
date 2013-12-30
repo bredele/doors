@@ -40,7 +40,7 @@ function parse(html) {
 
   // tag name
   var m = /<([\w:]+)/.exec(html);
-  if (!m) throw new Error('No elements were generated.');
+  if (!m) return document.createTextNode(html);
   var tag = m[1];
 
   // body support
@@ -59,14 +59,16 @@ function parse(html) {
   el.innerHTML = prefix + html + suffix;
   while (depth--) el = el.lastChild;
 
-  var els = el.children;
-  if (1 == els.length) {
-    return el.removeChild(els[0]);
+  // Note: when moving children, don't rely on el.children
+  // being 'live' to support Polymer's broken behaviour.
+  // See: https://github.com/component/domify/pull/23
+  if (1 == el.children.length) {
+    return el.removeChild(el.children[0]);
   }
 
   var fragment = document.createDocumentFragment();
-  while (els.length) {
-    fragment.appendChild(el.removeChild(els[0]));
+  while (el.children.length) {
+    fragment.appendChild(el.removeChild(el.children[0]));
   }
 
   return fragment;

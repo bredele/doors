@@ -2,9 +2,6 @@
 var indexOf = require('indexof');
 var trim = require('trim');
 
-// function parse(expr){
-//   return new Function('model', expr);
-// }
 
 /**
  * Expose 'interpolation'
@@ -17,7 +14,6 @@ var trim = require('trim');
 module.exports.text = function(text, model){
   //TODO: refactor with attrs
   return text.replace(/\{([^}]+)\}/g, function(_, expr){
-    //var fn = parse('return '+ expr.trim());
     var value = model.get(trim(expr));
     return value ? value : '';
   });

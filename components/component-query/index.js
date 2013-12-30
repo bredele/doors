@@ -1,4 +1,3 @@
-
 function one(selector, el) {
   return el.querySelector(selector);
 }
@@ -18,4 +17,5 @@ exports.engine = function(obj){
   if (!obj.all) throw new Error('.all callback required');
   one = obj.one;
   exports.all = obj.all;
+  return exports;
 };

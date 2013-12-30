@@ -1,4 +1,3 @@
-
 /**
  * Dependencies
  */
@@ -13,7 +12,7 @@ var ev = require('event'),
  */
 
 var mapper = {
-	'click' : 'touchstart',
+	'click' : 'touchend',
 	'mousedown' : 'touchstart',
 	'mouseup' : 'touchend',
 	'mousemove' : 'touchmove'

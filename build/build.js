@@ -635,9 +635,6 @@ require.register("bredele-interpolation/index.js", Function("exports, require, m
 var indexOf = require('indexof');\n\
 var trim = require('trim');\n\
 \n\
-// function parse(expr){\n\
-//   return new Function('model', expr);\n\
-// }\n\
 \n\
 /**\n\
  * Expose 'interpolation'\n\
@@ -650,7 +647,6 @@ var trim = require('trim');\n\
 module.exports.text = function(text, model){\n\
   //TODO: refactor with attrs\n\
   return text.replace(/\\{([^}]+)\\}/g, function(_, expr){\n\
-    //var fn = parse('return '+ expr.trim());\n\
     var value = model.get(trim(expr));\n\
     return value ? value : '';\n\
   });\n\
@@ -663,7 +659,8 @@ module.exports.attrs = function(text, model){\n\
     if(!~indexOf(exprs, value)) exprs.push(value);\n\
   });\n\
   return exprs;\n\
-};//@ sourceURL=bredele-interpolation/index.js"
+};\n\
+//@ sourceURL=bredele-interpolation/index.js"
 ));
 require.register("component-domify/index.js", Function("exports, require, module",
 "\n\
@@ -708,7 +705,7 @@ function parse(html) {\n\
 \n\
   // tag name\n\
   var m = /<([\\w:]+)/.exec(html);\n\
-  if (!m) throw new Error('No elements were generated.');\n\
+  if (!m) return document.createTextNode(html);\n\
   var tag = m[1];\n\
 \n\
   // body support\n\
@@ -727,14 +724,16 @@ function parse(html) {\n\
   el.innerHTML = prefix + html + suffix;\n\
   while (depth--) el = el.lastChild;\n\
 \n\
-  var els = el.children;\n\
-  if (1 == els.length) {\n\
-    return el.removeChild(els[0]);\n\
+  // Note: when moving children, don't rely on el.children\n\
+  // being 'live' to support Polymer's broken behaviour.\n\
+  // See: https://github.com/component/domify/pull/23\n\
+  if (1 == el.children.length) {\n\
+    return el.removeChild(el.children[0]);\n\
   }\n\
 \n\
   var fragment = document.createDocumentFragment();\n\
-  while (els.length) {\n\
-    fragment.appendChild(el.removeChild(els[0]));\n\
+  while (el.children.length) {\n\
+    fragment.appendChild(el.removeChild(el.children[0]));\n\
   }\n\
 \n\
   return fragment;\n\
@@ -784,7 +783,7 @@ Substitution.prototype.apply = function() {\n\
   this.node.nodeValue = interpolation.text(this.text, this.store);\n\
 };//@ sourceURL=bredele-node-substitution/index.js"
 ));
-require.register("bredele-data-binding/index.js", Function("exports, require, module",
+require.register("bredele-binding/index.js", Function("exports, require, module",
 "var Interpolation = require('node-substitution');\n\
 var indexOf = require('indexof');\n\
 \n\
@@ -808,14 +807,44 @@ function Binding(model){\n\
 \n\
 \n\
 /**\n\
+ * Format plugin content.\n\
+ * @param  {String} str \n\
+ * @return {Object}\n\
+ * @api private     \n\
+ */\n\
+\n\
+function parse(node, str){\n\
+  var expr = str.split(':');\n\
+  var params = expr[1].split(',');\n\
+  params.splice(0,0,node);\n\
+  return {\n\
+    method: expr[0],\n\
+    params: params\n\
+  };\n\
+}\n\
+\n\
+\n\
+/**\n\
  * Add binding by name\n\
  * @param {String} name  \n\
  * @param {Object} plugin \n\
  * @api public\n\
  */\n\
 \n\
-Binding.prototype.add = function(name, plugin) {\n\
+Binding.prototype.attr = function(name, plugin) {\n\
   this.plugins[name] = plugin;\n\
+};\n\
+\n\
+\n\
+/**\n\
+ * Add binding by name\n\
+ * @param {String} name  \n\
+ * @param {Object} plugin \n\
+ * @api public\n\
+ */\n\
+\n\
+Binding.prototype.data = function(name, plugin) {\n\
+  this.plugins[\"data-\" + name] = plugin;\n\
 };\n\
 \n\
 \n\
@@ -824,23 +853,21 @@ Binding.prototype.add = function(name, plugin) {\n\
  * @param  {HTMLElement} node \n\
  * @api private\n\
  */\n\
+\n\
 Binding.prototype.attrsBinding = function(node){\n\
   var attributes = node.attributes;\n\
   //reverse loop doesn't work on IE...\n\
   for(var i = 0, l = attributes.length; i < l; i++){\n\
     var attribute = attributes[i];\n\
-    var name = attribute.nodeName;\n\
-    var plugin = this.plugins[name.substring(5)];\n\
+    var plugin = this.plugins[attribute.nodeName];\n\
     var content = attribute.nodeValue;\n\
-    if(plugin && (name.substring(0,5) === 'data-')) {\n\
+\n\
+    if(plugin) {\n\
       if(typeof plugin === 'function'){\n\
         plugin.call(this.model, node, content);\n\
       } else {\n\
-        var expr = content.split(':');\n\
-        var method = expr[0];\n\
-        var params = expr[1].split(',');\n\
-        params.splice(0,0,node);\n\
-        plugin[method].apply(plugin, params);\n\
+        var format = parse(node, content);\n\
+        plugin[format.method].apply(plugin, format.params);\n\
       }\n\
     } else {\n\
       if(indexOf(content, '{') > -1){\n\
@@ -883,10 +910,10 @@ Binding.prototype.apply = function(node) {\n\
     this.apply(child);\n\
   }\n\
 };\n\
-//@ sourceURL=bredele-data-binding/index.js"
+//@ sourceURL=bredele-binding/index.js"
 ));
 require.register("bredele-view/index.js", Function("exports, require, module",
-"var Binding = require('data-binding');\n\
+"var Binding = require('binding');\n\
 var Store = require('store');\n\
 \n\
 //TODO: do our own component\n\
@@ -948,7 +975,7 @@ View.prototype.template = function(tmpl, store, mixin) {\n\
  */\n\
 \n\
 View.prototype.plugin = function(name, plug) {\n\
-  this.binding.add(name, plug);\n\
+  this.binding.data(name, plug);\n\
   return this;\n\
 };\n\
 \n\
@@ -1461,8 +1488,7 @@ exports.unbind = function(el, type, fn, capture){\n\
 //@ sourceURL=component-delegate/index.js"
 ));
 require.register("bredele-event-plugin/index.js", Function("exports, require, module",
-"\n\
-/**\n\
+"/**\n\
  * Dependencies\n\
  */\n\
 \n\
@@ -1476,7 +1502,7 @@ var ev = require('event'),\n\
  */\n\
 \n\
 var mapper = {\n\
-\t'click' : 'touchstart',\n\
+\t'click' : 'touchend',\n\
 \t'mousedown' : 'touchstart',\n\
 \t'mouseup' : 'touchend',\n\
 \t'mousemove' : 'touchmove'\n\
@@ -1546,10 +1572,11 @@ Event.prototype.delegate = function(node, selector, type, callback, capture) {\n
 \n\
 Event.prototype.map = function(type) {\n\
 \treturn this.isTouch ? (mapper[type] || type) : type;\n\
-};//@ sourceURL=bredele-event-plugin/index.js"
+};\n\
+//@ sourceURL=bredele-event-plugin/index.js"
 ));
 require.register("bredele-each-plugin/index.js", Function("exports, require, module",
-"var Binding = require('data-binding');\n\
+"var Binding = require('binding');\n\
 var Store = require('store');\n\
 \n\
 \n\
@@ -1843,8 +1870,7 @@ ClassList.prototype.contains = function(name){\n\
 //@ sourceURL=component-classes/index.js"
 ));
 require.register("component-query/index.js", Function("exports, require, module",
-"\n\
-function one(selector, el) {\n\
+"function one(selector, el) {\n\
   return el.querySelector(selector);\n\
 }\n\
 \n\
@@ -1863,6 +1889,7 @@ exports.engine = function(obj){\n\
   if (!obj.all) throw new Error('.all callback required');\n\
   one = obj.one;\n\
   exports.all = obj.all;\n\
+  return exports;\n\
 };\n\
 //@ sourceURL=component-query/index.js"
 ));
@@ -1899,6 +1926,7 @@ view.plugin('event', new Listener({\n\
 \t\t\tstack.show('demo2');\n\
 \t\t}\n\
 \n\
+\t\t//do a control plugin\n\
 \t\tif(!current.isEqualNode(node)) {\n\
 \t\t\tclasses(current).remove('active');\n\
 \t\t\tclassList.add('active');\n\
@@ -2013,9 +2041,11 @@ require.register("demo/javascripts/demo2.html", Function("exports, require, modu
 "module.exports = '<div class=\"demo2\">\\n\
 \t<form>\\n\
 \t\t<p>\\n\
+\t\t\t<label>Nickname</label>\\n\
 \t\t\t<input type=\"text\">\\n\
 \t\t</p>\\n\
 \t\t<p>\\n\
+\t\t\t<label>Password</label>\\n\
 \t\t\t<input type=\"password\">\\n\
 \t\t</p>\\n\
 \t\t<p>\\n\
@@ -2036,22 +2066,10 @@ require.alias("bredele-doors/index.js", "bredele-doors/index.js");
 require.alias("bredele-view/index.js", "demo/deps/view/index.js");
 require.alias("bredele-view/index.js", "demo/deps/view/index.js");
 require.alias("bredele-view/index.js", "view/index.js");
-require.alias("bredele-data-binding/index.js", "bredele-view/deps/data-binding/index.js");
-require.alias("bredele-data-binding/index.js", "bredele-view/deps/data-binding/index.js");
-require.alias("bredele-store/index.js", "bredele-data-binding/deps/store/index.js");
-require.alias("bredele-store/index.js", "bredele-data-binding/deps/store/index.js");
-require.alias("component-emitter/index.js", "bredele-store/deps/emitter/index.js");
-require.alias("component-indexof/index.js", "component-emitter/deps/indexof/index.js");
-
-require.alias("bredele-each/index.js", "bredele-store/deps/each/index.js");
-require.alias("bredele-each/index.js", "bredele-store/deps/each/index.js");
-require.alias("bredele-each/index.js", "bredele-each/index.js");
-require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
-require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
-require.alias("bredele-clone/index.js", "bredele-clone/index.js");
-require.alias("bredele-store/index.js", "bredele-store/index.js");
-require.alias("bredele-node-substitution/index.js", "bredele-data-binding/deps/node-substitution/index.js");
-require.alias("bredele-node-substitution/index.js", "bredele-data-binding/deps/node-substitution/index.js");
+require.alias("bredele-binding/index.js", "bredele-view/deps/binding/index.js");
+require.alias("bredele-binding/index.js", "bredele-view/deps/binding/index.js");
+require.alias("bredele-node-substitution/index.js", "bredele-binding/deps/node-substitution/index.js");
+require.alias("bredele-node-substitution/index.js", "bredele-binding/deps/node-substitution/index.js");
 require.alias("component-assert/index.js", "bredele-node-substitution/deps/assert/index.js");
 require.alias("component-stack/index.js", "component-assert/deps/stack/index.js");
 
@@ -2078,9 +2096,9 @@ require.alias("bredele-store/index.js", "bredele-store/index.js");
 require.alias("component-domify/index.js", "bredele-node-substitution/deps/domify/index.js");
 
 require.alias("bredele-node-substitution/index.js", "bredele-node-substitution/index.js");
-require.alias("component-indexof/index.js", "bredele-data-binding/deps/indexof/index.js");
+require.alias("component-indexof/index.js", "bredele-binding/deps/indexof/index.js");
 
-require.alias("bredele-data-binding/index.js", "bredele-data-binding/index.js");
+require.alias("bredele-binding/index.js", "bredele-binding/index.js");
 require.alias("bredele-store/index.js", "bredele-view/deps/store/index.js");
 require.alias("bredele-store/index.js", "bredele-view/deps/store/index.js");
 require.alias("component-emitter/index.js", "bredele-store/deps/emitter/index.js");
@@ -2129,22 +2147,10 @@ require.alias("bredele-event-plugin/index.js", "bredele-event-plugin/index.js");
 require.alias("bredele-each-plugin/index.js", "demo/deps/each-plugin/index.js");
 require.alias("bredele-each-plugin/index.js", "demo/deps/each-plugin/index.js");
 require.alias("bredele-each-plugin/index.js", "each-plugin/index.js");
-require.alias("bredele-data-binding/index.js", "bredele-each-plugin/deps/data-binding/index.js");
-require.alias("bredele-data-binding/index.js", "bredele-each-plugin/deps/data-binding/index.js");
-require.alias("bredele-store/index.js", "bredele-data-binding/deps/store/index.js");
-require.alias("bredele-store/index.js", "bredele-data-binding/deps/store/index.js");
-require.alias("component-emitter/index.js", "bredele-store/deps/emitter/index.js");
-require.alias("component-indexof/index.js", "component-emitter/deps/indexof/index.js");
-
-require.alias("bredele-each/index.js", "bredele-store/deps/each/index.js");
-require.alias("bredele-each/index.js", "bredele-store/deps/each/index.js");
-require.alias("bredele-each/index.js", "bredele-each/index.js");
-require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
-require.alias("bredele-clone/index.js", "bredele-store/deps/clone/index.js");
-require.alias("bredele-clone/index.js", "bredele-clone/index.js");
-require.alias("bredele-store/index.js", "bredele-store/index.js");
-require.alias("bredele-node-substitution/index.js", "bredele-data-binding/deps/node-substitution/index.js");
-require.alias("bredele-node-substitution/index.js", "bredele-data-binding/deps/node-substitution/index.js");
+require.alias("bredele-binding/index.js", "bredele-each-plugin/deps/binding/index.js");
+require.alias("bredele-binding/index.js", "bredele-each-plugin/deps/binding/index.js");
+require.alias("bredele-node-substitution/index.js", "bredele-binding/deps/node-substitution/index.js");
+require.alias("bredele-node-substitution/index.js", "bredele-binding/deps/node-substitution/index.js");
 require.alias("component-assert/index.js", "bredele-node-substitution/deps/assert/index.js");
 require.alias("component-stack/index.js", "component-assert/deps/stack/index.js");
 
@@ -2171,9 +2177,9 @@ require.alias("bredele-store/index.js", "bredele-store/index.js");
 require.alias("component-domify/index.js", "bredele-node-substitution/deps/domify/index.js");
 
 require.alias("bredele-node-substitution/index.js", "bredele-node-substitution/index.js");
-require.alias("component-indexof/index.js", "bredele-data-binding/deps/indexof/index.js");
+require.alias("component-indexof/index.js", "bredele-binding/deps/indexof/index.js");
 
-require.alias("bredele-data-binding/index.js", "bredele-data-binding/index.js");
+require.alias("bredele-binding/index.js", "bredele-binding/index.js");
 require.alias("bredele-store/index.js", "bredele-each-plugin/deps/store/index.js");
 require.alias("bredele-store/index.js", "bredele-each-plugin/deps/store/index.js");
 require.alias("component-emitter/index.js", "bredele-store/deps/emitter/index.js");

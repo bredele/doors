@@ -1,4 +1,4 @@
-var Binding = require('data-binding');
+var Binding = require('binding');
 var Store = require('store');
 
 //TODO: do our own component
@@ -60,7 +60,7 @@ View.prototype.template = function(tmpl, store, mixin) {
  */
 
 View.prototype.plugin = function(name, plug) {
-  this.binding.add(name, plug);
+  this.binding.data(name, plug);
   return this;
 };
 

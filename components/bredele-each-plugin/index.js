@@ -1,4 +1,4 @@
-var Binding = require('data-binding');
+var Binding = require('binding');
 var Store = require('store');
 
 

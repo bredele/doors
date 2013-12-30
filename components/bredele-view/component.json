@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "bredele/data-binding": "*",
+    "bredele/binding": "*",
     "bredele/store": "*"
   },
   "development": {

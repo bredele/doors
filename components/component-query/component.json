@@ -2,7 +2,7 @@
   "name": "query",
   "repo": "component/query",
   "description": "Query the DOM with selector engine fallback support",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": [
     "query",
     "selector",
