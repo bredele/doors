@@ -1,4 +1,3 @@
-
 # doors
 
   door pattern
@@ -113,7 +112,7 @@ Additionally, things can change and are not necessarily immutable. A door which 
   Listen door events.
 
 ```js
-  door.toggle('open', function(){
+  door.on('open', function(){
     //do something
   }); 
 ```
