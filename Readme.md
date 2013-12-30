@@ -9,7 +9,9 @@
 
     $ component install bredele/doors
 
-  Here's a standalone version of [doors](https://github.com/bredele/doors/blob/master/doors.js).
+  [Stansalone](https://github.com/bredele/doors/blob/master/doors.js):
+
+    $ <script src="doors.js"></script>
 
 ## What is the door pattern?
 
