@@ -1,6 +1,6 @@
 # doors
 
-  door pattern
+  > door design pattern
 
 ## Installation
 
