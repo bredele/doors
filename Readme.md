@@ -1,6 +1,6 @@
 # doors
 
-  > door asynchronous design pattern
+  > A door represents the eventual result of an asynchronous operation. This operation is trigerred by an `open` event and depend on multiple conditions (`locks`).
 
 ## Installation
 
@@ -94,6 +94,8 @@ Additionally, things can change and are not necessarily immutable. A door which 
   door.unlock('olivier', 'amy'); //unlock 'olivier' and 'amy'
   door.unlock(); //unlock all the locks
 ```
+
+Emits `open` event when all the locks are unlocked.
 
 ### .toggle(key, bool)
 
