@@ -1,6 +1,6 @@
 # doors
 
-  > door design pattern
+  > door asynchronous design pattern
 
 ## Installation
 
@@ -8,7 +8,7 @@
 
     $ component install bredele/doors
 
-  [Stansalone](https://github.com/bredele/doors/blob/master/doors.js):
+  [standalone](https://github.com/bredele/doors/blob/master/doors.js):
 
     $ <script src="doors.js"></script>
 
@@ -56,11 +56,15 @@ Additionally, things can change and are not necessarily immutable. A door which 
   var door = new Doors('github');
 ```
 
-### Doors.has(key:String)
+### .has(key)
 
   Return true if has lock.
 
-### Doors.add(key:String)
+```js
+  door.has('olivier');
+```  
+
+### .add(key)
 
   Add string lock or child door.
 
@@ -69,7 +73,7 @@ Additionally, things can change and are not necessarily immutable. A door which 
   door.add(new Doors('child')); 
 ```
 
-### Doors.lock()
+### .lock()
 
   Lock a previously added lock.
 
@@ -80,7 +84,7 @@ Additionally, things can change and are not necessarily immutable. A door which 
   door.lock(); //lock all the locks
 ```
 
-### Doors.unlock()
+### .unlock()
 
   Unlock door's lock(s).
 
@@ -91,7 +95,7 @@ Additionally, things can change and are not necessarily immutable. A door which 
   door.unlock(); //unlock all the locks
 ```
 
-### Doors.toggle(key:String, bool:Boolean)
+### .toggle(key, bool)
 
   Toggle Lock.
 
@@ -101,13 +105,13 @@ Additionally, things can change and are not necessarily immutable. A door which 
 
 ```
 
-### Doors.open()
+### .open()
 
   Open the door only if all locks are unlocked.
   and emit open event.
 
 
-### Doors.on(topic:String, callback:Function)
+### .on(topic, fn)
 
   Listen door events.
 
