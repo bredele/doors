@@ -1,8 +1,21 @@
 var Doors = require('doors');
-
 var assert = require('assert');
-var contains = require('contains');
-var count = require('count');
+
+//utils
+
+
+var contains = function(arr, val) {
+  return !!~arr.indexOf(val);
+};
+
+var count = function(arr, iter) {
+  var count = 0;
+  for(var l = arr.length; l--;) {
+    if(arr[l] === iter) ++count;
+  }
+  return count;
+};
+
 var has = function(obj, key) {
   return !!obj[key];
 };

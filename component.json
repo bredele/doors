@@ -9,9 +9,7 @@
     "component/indexof": "*"
   },
   "development": {
-    "component/assert": "*",
-    "leafs/array-contains": "*",
-    "leafs/array-count": "*"
+    "component/assert": "*"
   },
   "license": "MIT",
   "main": "index.js",
