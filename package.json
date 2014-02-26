@@ -1,0 +1,29 @@
+{
+  "name": "doors",
+  "version": "0.0.1",
+  "description": "Door asynchronous pattern",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bredele/doors.git"
+  },
+  "keywords": [
+    "asynchronous",
+    "promises",
+    "states",
+    "locks",
+    "doors"
+  ],
+  "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bredele/doors/issues"
+  }
+}
