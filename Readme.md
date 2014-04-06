@@ -8,6 +8,10 @@
 
     $ component install bredele/doors
 
+  Install with [nodejs](http://nodejs.org):
+
+    $ npm install bredele-doors
+
   [standalone](https://github.com/bredele/doors/blob/master/doors.js):
 
     $ <script src="doors.js"></script>
