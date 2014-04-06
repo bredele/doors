@@ -29,9 +29,9 @@ You will find some examples [here](https://github.com/bredele/doors/tree/master/
 Design patterns are very trendy.
 There are two design patterns that are really interesting:
 
-* **State Machine** - Basically, it allows you to change your application from one state to another (this is called a transition) when initiated by a triggering an event or a **condition**. You can define an action to execute asynchronously for each transition. You will find a great State machine [here](https://github.com/flams/emily/blob/master/src/StateMachine.js).
+* **State Machine** - Basically, it allows you to change your application from one state to another (this is called a transition) when initiated by a triggering an event or a **condition**. You can define an action to execute asynchronously for each transition. You will find a great State machine [here](https://github.com/bredele/states).
 
-* **Promises** - To use the words of Wikipedia : it represents the value returned from the single completion of an operation. To make it simple, that's a state machine with two immutable transitions : unfulfilled to fulfilled (or unresolve to resolve) and unfulfilled to failed. You will find a great Promises implementation [here](https://github.com/flams/emily/blob/master/src/Promise.js)
+* **Promises** - To use the words of Wikipedia : it represents the value returned from the single completion of an operation. To make it simple, that's a state machine with two immutable transitions : unfulfilled to fulfilled (or unresolve to resolve) and unfulfilled to failed. You will find a great Promises implementation [here](https://github.com/bredele/promise).
 
 Both have something missing. A transition occurs when **one** condition is triggered. Things are not so simple in real life. You will probably have more than one condition to do something, but one condition is sufficient to not do it. Think about a door with multiple locks: **you can't open the door until all locks are unlocked.**
 
