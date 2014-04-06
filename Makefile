@@ -1,3 +1,5 @@
+test: build
+	@NODE_ENV=test mocha test/*.js
 
 build: components index.js
 	@component build --dev

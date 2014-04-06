@@ -1,5 +1,5 @@
-var Emitter = require('emitter'),
-		index = require('indexof');
+var Emitter = require('component-emitter');
+var index = require('indexof');
 
 
 /**

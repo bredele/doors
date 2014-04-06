@@ -1,4 +1,4 @@
-var Doors = require('doors');
+var Doors = require('..');
 var assert = require('assert');
 
 //utils
