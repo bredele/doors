@@ -2,7 +2,7 @@
   "name": "doors",
   "repo": "bredele/doors",
   "description": "door pattern",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [],
   "dependencies": {
     "component/emitter": "*",
