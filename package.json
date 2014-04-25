@@ -30,9 +30,6 @@
     "component-emitter": "^1.1.2",
     "indexof": "0.0.1"
   },
-  "browser": {
-    "emitter": "component-emitter"
-  },
   "devDependencies": {
     "mocha": "~1.17.1"
   }
