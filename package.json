@@ -1,5 +1,5 @@
 {
-  "name": "bredele-doors",
+  "name": "doors",
   "version": "0.1.1",
   "description": "Door asynchronous pattern",
   "main": "index.js",
