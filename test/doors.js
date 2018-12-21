@@ -224,9 +224,16 @@ test('emit open and close event', assert => {
   door.unlock('open')
 })
 
-test('reject promise if door closed prior', assert => {
+test('resolve promise if door closed prior', assert => {
   assert.plan(1)
   var door = doors('hello')
   door.promise().then(() => assert.ok('open'), () => assert.fail('close'))
   door.unlock('hello')
+})
+
+test('reject promise if door opened prior', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.promise().then(() => assert.fail('open'), () => assert.ok('close'))
+  door.lock('hello')
 })
