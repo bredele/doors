@@ -299,3 +299,15 @@ test('unlock on promise resolve', assert => {
   assert.equal(door.knock(), false)
   promise.then(() => assert.equal(door.knock(), true))
 })
+
+
+test('lock on promise resolve', assert => {
+  assert.plan(2)
+  var door = doors()
+  var promise = new Promise(resolve => {
+    setTimeout(resolve, 500)
+  })
+  door.lock('lock1', promise)
+  assert.equal(door.knock(), true)
+  promise.then(() => assert.equal(door.knock(), false))
+})

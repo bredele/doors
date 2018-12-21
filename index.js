@@ -136,10 +136,15 @@ module.exports = function (arg) {
    * @api public
    */
 
-  door.lock = function (names) {
-    split(names).map(function (name) {
-      door.add(name)
-    })
+  door.lock = function (names, promise) {
+    var add = function () {
+      split(names).map(function (name) {
+        door.add(name)
+      })
+    }
+    return promise
+      ? promise.then(add)
+      : add()
   }
 
   /**
