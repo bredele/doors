@@ -5,7 +5,7 @@
 var emitter = require('component-emitter')
 
 
-module.exports = function () {
+module.exports = function (arg) {
 
   var door = emitter({})
 
@@ -37,6 +37,12 @@ module.exports = function () {
   door.unlock = function (names) {
     split(names).map(function (name) {
       door.remove(name)
+    })
+  }
+
+  if (arg) {
+    split(arg).map(function (name) {
+      door.add(name)
     })
   }
 
