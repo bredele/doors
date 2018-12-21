@@ -140,8 +140,11 @@ test('should accept arrays of locks', assert => {
 })
 
 test('should emit lock event when lock is added', assert => {
-  assert.plan(1)
+  assert.plan(2)
   var door = doors()
+  door.on('lock', name => assert.equal(name, 'hello'))
   door.on('lock hello', () => assert.ok('event received'))
   door.lock('hello')
 })
+
+test
