@@ -31,3 +31,34 @@ test('should add lock and resolve promise only once when unlocked', assert => {
 })
 
 //test('should resolve only once')
+
+test('should add locks and resolve promise only once all the locks are unlocked', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.lock('hello')
+  door.lock('world')
+  door.promise('hello world').then(() => assert.ok('hello'))
+  door.unlock('hello')
+  door.unlock('world')
+})
+
+test('should remove all spaces from promise and resolve it when given locks are unlocked', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.lock('hello')
+  door.lock('world')
+  door.promise('  world    hello').then(() => assert.ok('hello'))
+  door.unlock('hello')
+  door.unlock('world')
+})
+
+
+test('should resolve promise when door is open', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.lock('hello')
+  door.lock('world')
+  door.promise().then(() => assert.ok('hello'))
+  door.unlock('hello')
+  door.unlock('world')
+})
