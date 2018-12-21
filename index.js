@@ -47,7 +47,11 @@ module.exports = function (arg) {
    */
 
   door.add = function (name) {
-    if (!~locks.indexOf(name)) locks.push(name)
+    if (!~locks.indexOf(name)) {
+      locks.push(name)
+      door.emit('lock ' + name)
+      door.emit('lock', name)
+    }
   }
 
   /**
@@ -68,8 +72,6 @@ module.exports = function (arg) {
 
   door.lock = function (names) {
     split(names).map(function (name) {
-      door.emit('lock ' + name)
-      door.emit('lock', name)
       door.add(name)
     })
   }

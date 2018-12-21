@@ -159,6 +159,14 @@ test('should emit multiple time the lock event', assert => {
   door.lock(locks)
 })
 
+test('should not emit lock event if lock has already been added', assert => {
+  assert.plan(1)
+  var door = doors('hello')
+  door.on('lock hello', () => assert.fail('fail'))
+  door.lock('hello')
+  assert.ok('pass')
+})
+
 test('should emit unlock event when lock is unlocked', assert => {
   assert.plan(2)
   var door = doors('hello')
