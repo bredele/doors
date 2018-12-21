@@ -208,9 +208,20 @@ test('should emit close event when door is locked', assert => {
 test('should emit close event once when door is locked', assert => {
   assert.plan(1)
   var door = doors()
-  door.on('close', () => assert.ok('open'))
+  door.on('close', () => assert.ok('close'))
   door.lock('hello')
   door.lock('hello')
+})
+
+test('should emit open and close event back and forth', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.on('open', () => assert.ok('open once'))
+  door.on('close', () => assert.ok('close once'))
+  door.lock('hello')
+  door.lock('hello')
+  door.unlock('open')
+  door.unlock('open')
 })
 
 test('should reject promise when door opens', assert => {
