@@ -57,6 +57,17 @@ test('should add multiple locks at a time', assert => {
   assert.equal(door.knock(), true)
 })
 
+test('should remove multiple locks at a time', assert => {
+  assert.plan(2)
+  var door = doors()
+  door.lock('hello world foo')
+  door.unlock('hello')
+  assert.equal(door.knock(), false)
+  door.unlock('foo world')
+  assert.equal(door.knock(), true)
+})
+
+
 // test('knock should return true if lock is closed', assert => {
 //   assert.plan(1)
 //   var door = doors()

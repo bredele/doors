@@ -35,7 +35,9 @@ module.exports = function () {
   }
 
   door.unlock = function (names) {
-    door.remove(names)
+    split(names).map(function (name) {
+      door.remove(name)
+    })
   }
 
   return door
