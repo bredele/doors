@@ -5,6 +5,35 @@
 var emitter = require('component-emitter')
 
 /**
+ * Door factory.
+ *
+ * Examples:
+ *
+ *  door()
+ *  door('lock1')
+ *  door('lock1 lock2')
+ *  door(['lock1', 'lock2'])
+ *  door(core => {
+ *    core.unlock('lock1')
+ *  }, 'lock1')
+ *
+ *
+ * @param {String|Array?}
+ * @return {Object}
+ * @api public
+ */
+
+module.exports = function (fn, names) {
+  if (typeof fn === 'function') {
+    var door = doors(names)
+    var promise = door.promise()
+    fn(door)
+    return promise
+  }
+  return doors(fn)
+}
+
+/**
  * Door constructor.
  *
  * Examples:
@@ -20,7 +49,7 @@ var emitter = require('component-emitter')
  * @api public
  */
 
-module.exports = function (arg) {
+function doors(arg) {
 
   var door = emitter({})
 

@@ -5,14 +5,29 @@
  [![Downloads](https://img.shields.io/npm/dm/doors.svg)](http://npm-stat.com/charts.html?package=doors)
  [![pledge](https://bredele.github.io/contributing-guide/community-pledge.svg)](https://github.com/bredele/contributing-guide/blob/master/guidelines.md)
 
-
-Use door to represent asynchronous operation depending on multiple conditions. Imagine a door with multiple locks, you can not open the door until all locks are unlocked and one lock is enough for the door to be closed.
+Use door to represent asynchronous operations depending on multiple conditions. Imagine a door with multiple locks, you can not open the door until all locks are unlocked and one lock is enough for the door to be closed.
 
 [Check it out online!](http://bredele.github.io/doors)
 
 ## Usage
 
-A door is either opened or closed. The transition from one state to an other is not immutable and depends on conditions called "locks".
+A door is either opened or closed. The transition from one state to an other depends on conditions called "locks".
+
+```js
+const Doors = require('doors')
+
+// create a promise that will resolve only once hello and world are unlocked
+const promise = new Doors(door => {
+  door.unlock('hello')
+  setTimeout(() => {
+    door.unlock('world')
+  }, 2000)
+}, 'hello world')
+```
+
+At the opposite of a promise, the transition from open to close is not immutable (see below) and a door can oscillate between those 2 states. For example, this module has been used in production to represent database connection hang up with automatic retry. 
+
+## Api
 
 ```js
 const doors = require('doors')

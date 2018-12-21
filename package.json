@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Door asynchronous pattern",
   "main": "index.js",
-  "directories": {
-    "example": "examples",
-    "test": "test"
+  "engines": {
+    "node": ">= 8.9.4"
   },
   "scripts": {
     "test": "tape test/*.js"

@@ -321,3 +321,13 @@ test('lock on promise resolve', assert => {
 //   other.lock('lock1')
 //   assert.equal(door.knock(), false)
 // })
+
+
+test('constructor should return promise if callback is passed', assert => {
+  assert.plan(1)
+  var promise = doors(door => {
+    door.unlock('lock1')
+    setTimeout(() => door.unlock('lock2'), 500)
+  }, 'lock1 lock2')
+  promise.then(() => assert.ok('resolved'))
+})
