@@ -311,3 +311,13 @@ test('lock on promise resolve', assert => {
   assert.equal(door.knock(), true)
   promise.then(() => assert.equal(door.knock(), false))
 })
+
+// test('should add other door as lock', assert => {
+//   assert.plan(2)
+//   const other = doors()
+//   const door = doors()
+//   door.lock('hello', other)
+//   assert.equal(door.knock(), true)
+//   other.lock('lock1')
+//   assert.equal(door.knock(), false)
+// })

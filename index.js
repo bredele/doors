@@ -138,9 +138,13 @@ module.exports = function (arg) {
 
   door.lock = function (names, promise) {
     var add = map(names, door.add)
-    return promise && typeof promise.then === 'function'
-      ? promise.then(add)
-      : add()
+    switch (type(promise)) {
+      case 'promise':
+        promise.then(add)
+        break
+      default:
+        add()
+    }
   }
 
   /**
@@ -159,9 +163,13 @@ module.exports = function (arg) {
 
   door.unlock = function (names, promise) {
     var remove = map(names, door.remove)
-    return promise && typeof promise.then === 'function'
-      ? promise.then(remove)
-      : remove()
+    switch (type(promise)) {
+      case 'promise':
+        promise.then(remove)
+        break
+      default:
+        remove()
+    }
   }
 
   /**
@@ -203,5 +211,20 @@ function split (names) {
 function map (names, fn) {
   return function () {
     split(names).map(fn)
+  }
+}
+
+/**
+ * Return object type.
+ *
+ * @param {Object} obj
+ * @return {String}
+ * @api private
+ */
+
+function type (obj) {
+  if (obj) {
+    if (typeof obj.then === 'function') return 'promise'
+    else if (typeof obj.on === 'function' && typeof obj.emit === 'function') return 'emitter'
   }
 }
