@@ -27,7 +27,7 @@
     "url": "https://github.com/bredele/doors/issues"
   },
   "dependencies": {
-    "component-emitter": "^1.1.2",
+    "component-emitter": "^1.2.1",
     "indexof": "0.0.1"
   },
   "devDependencies": {
