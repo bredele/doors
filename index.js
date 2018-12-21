@@ -36,6 +36,14 @@ module.exports = function (arg) {
   }
 
   door.promise = function (names) {
+    if (names) {
+      return Promise.all(split(names).map(function (name) {
+        return new Promise(function (resolve, reject) {
+          door.once('lock ' + name, reject)
+          door.once('unlock ' + name, resolve)
+        })
+      }))
+    }
     return new Promise(function (resolve, reject) {
       door.once('open', resolve)
       door.once('close', reject)
