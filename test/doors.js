@@ -147,4 +147,14 @@ test('should emit lock event when lock is added', assert => {
   door.lock('hello')
 })
 
-test
+test('should emit multiple time the lock event', assert => {
+  assert.plan(4)
+  var door = doors()
+  const locks = ['hello', 'world']
+  door.on('lock hello', () => assert.ok('hello received'))
+  door.on('lock world', () => assert.ok('world received'))
+  door.on('lock', name => {
+    assert.equal(locks.indexOf(name) > -1, true)
+  })
+  door.lock(locks)
+})
