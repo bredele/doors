@@ -259,3 +259,12 @@ test('unlocks and resolve promise', assert => {
   door.unlock('hello')
   door.unlock('beep')
 })
+
+
+test('locks and reject promise', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.promise('hello beep').then(() => assert.fail('unlock'), () => assert.ok('lock'))
+  door.lock('hello world')
+  door.lock('beep')
+})
