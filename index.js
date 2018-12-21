@@ -138,7 +138,9 @@ module.exports = function (arg) {
 
   door.lock = function (names, promise) {
     var add = map(names, door.add)
-    return promise ? promise.then(add) : add()
+    return promise && typeof promise.then === 'function'
+      ? promise.then(add)
+      : add()
   }
 
   /**
@@ -157,7 +159,9 @@ module.exports = function (arg) {
 
   door.unlock = function (names, promise) {
     var remove = map(names, door.remove)
-    return promise ? promise.then(remove) : remove()
+    return promise && typeof promise.then === 'function'
+      ? promise.then(remove)
+      : remove()
   }
 
   /**

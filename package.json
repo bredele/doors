@@ -21,7 +21,7 @@
     "states",
     "locks",
     "doors",
-    "door",
+    "door"
   ],
   "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
   "license": "MIT",
