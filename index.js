@@ -29,7 +29,9 @@ module.exports = function () {
   }
 
   door.lock = function (names) {
-    door.add(names)
+    split(names).map(function (name) {
+      door.add(name)
+    })
   }
 
   door.unlock = function (names) {
@@ -37,4 +39,9 @@ module.exports = function () {
   }
 
   return door
+}
+
+
+function split (names) {
+  return names.trim().split(/\s+/g)
 }

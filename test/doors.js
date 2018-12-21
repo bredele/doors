@@ -37,13 +37,25 @@ test('should return false if door is locked (close)', assert => {
 })
 
 test('knock should return true if door is unlocked (open)', assert => {
-  assert.plan(1)
+  assert.plan(2)
   var door = doors()
   door.lock('hello')
+  door.lock('world')
   door.unlock('hello')
+  assert.equal(door.knock(), false)
+  door.unlock('world')
   assert.equal(door.knock(), true)
 })
 
+test('should add multiple locks at a time', assert => {
+  assert.plan(2)
+  var door = doors()
+  door.lock('hello world')
+  door.unlock('hello')
+  assert.equal(door.knock(), false)
+  door.unlock('world')
+  assert.equal(door.knock(), true)
+})
 
 // test('knock should return true if lock is closed', assert => {
 //   assert.plan(1)
