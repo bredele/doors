@@ -61,6 +61,14 @@ test('should add multiple locks at a time', assert => {
   door.unlock('world')
 })
 
+test('should add multiple locks at a time and trim locks', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.lock('     world     hello   ')
+  door.promise('world hello').then(() => assert.ok('success'))
+  door.unlock('hello')
+  door.unlock('world')
+})
 
 test('should resolve promise when door is open', assert => {
   assert.plan(1)
