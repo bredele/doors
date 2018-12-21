@@ -36,7 +36,10 @@ module.exports = function (arg) {
   }
 
   door.promise = function (names) {
-
+    return new Promise(function (resolve, reject) {
+      door.once('open', resolve)
+      door.once('close', reject)
+    })
   }
 
   /**
@@ -48,9 +51,11 @@ module.exports = function (arg) {
 
   door.add = function (name) {
     if (!~locks.indexOf(name)) {
+      var open = locks.length < 1
       locks.push(name)
       door.emit('lock ' + name)
       door.emit('lock', name)
+      if (open && locks.length > 0) door.emit('close')
     }
   }
 
@@ -64,9 +69,11 @@ module.exports = function (arg) {
   door.remove = function (name) {
     var index = locks.indexOf(name)
     if (index > -1) {
+      var close = locks.length > 0
       locks.splice(index, 1)
       door.emit('unlock ' + name)
       door.emit('unlock', name)
+      if (close && locks.length < 1) door.emit('open')
     }
   }
 
