@@ -72,6 +72,8 @@ module.exports = function (arg) {
 
   door.unlock = function (names) {
     split(names).map(function (name) {
+      door.emit('unlock ' + name)
+      door.emit('unlock', name)
       door.remove(name)
     })
   }
