@@ -183,6 +183,22 @@ test('should not emit unlock event if lock is not locked prior', assert => {
   assert.ok('end')
 })
 
+test('should emit open event when door is openned', assert => {
+  assert.plan(1)
+  var door = doors('hello')
+  door.on('open', () => assert.ok('open'))
+  door.unlock('hello')
+})
+
+test('should emit open event once when door is openned', assert => {
+  assert.plan(1)
+  var door = doors('hello')
+  door.on('open', () => assert.ok('open'))
+  door.unlock('hello')
+  door.unlock('hello')
+})
+
+
 test('should reject promise when door opens', assert => {
   assert.plan(1)
   var door = doors('hello')
