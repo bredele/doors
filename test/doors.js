@@ -23,20 +23,20 @@ test('should be an event emitter', assert => {
   assert.equal(typeof door.once, 'function')
 })
 
-test('should be openned by default', assert => {
+test('open and knock', assert => {
   assert.plan(1)
   var door = doors()
   assert.equal(door.knock(), true)
 })
 
-test('should return false if door is locked (close)', assert => {
+test('close and knock', assert => {
   assert.plan(1)
   var door = doors()
   door.lock('hello')
   assert.equal(door.knock(), false)
 })
 
-test('knock should return true if door is unlocked (open)', assert => {
+test('add locks and knock', assert => {
   assert.plan(2)
   var door = doors()
   door.lock('hello')
@@ -47,7 +47,7 @@ test('knock should return true if door is unlocked (open)', assert => {
   assert.equal(door.knock(), true)
 })
 
-test('knock should return true if given lock does not exist, false otherwise', assert => {
+test('knock lock', assert => {
   assert.plan(2)
   var door = doors()
   assert.equal(door.knock('world'), true)
@@ -55,7 +55,7 @@ test('knock should return true if given lock does not exist, false otherwise', a
   assert.equal(door.knock('world'), false)
 })
 
-test('should add multiple locks at a time', assert => {
+test('add multiple locks and knock', assert => {
   assert.plan(2)
   var door = doors()
   door.lock('hello world')
@@ -65,7 +65,7 @@ test('should add multiple locks at a time', assert => {
   assert.equal(door.knock(), true)
 })
 
-test('should remove multiple locks at a time', assert => {
+test('remove locks and knock', assert => {
   assert.plan(2)
   var door = doors()
   door.lock('hello world foo')
@@ -75,7 +75,7 @@ test('should remove multiple locks at a time', assert => {
   assert.equal(door.knock(), true)
 })
 
-test('should knock at multiple locks at the same time', assert => {
+test('locks and knock locks', assert => {
   assert.plan(6)
   var door = doors()
   door.lock('world hello')
@@ -88,26 +88,26 @@ test('should knock at multiple locks at the same time', assert => {
   assert.equal(door.knock('world'), true)
 })
 
-test('should add a lock from the constructor', assert => {
+test('lock from constructor and knock lock', assert => {
   assert.plan(1)
   var door = doors('hello')
   assert.equal(door.knock('hello'), false)
 })
 
-test('door should be locked if locks have been added from the constructor', assert => {
+test('lock from constructor and knock', assert => {
   assert.plan(1)
   var door = doors('hello')
   assert.equal(door.knock(), false)
 })
 
-test('should add multiple locks from the constructor', assert => {
+test('add locks from constructor and knock lock', assert => {
   assert.plan(2)
   var door = doors('hello world')
   assert.equal(door.knock('world'), false)
   assert.equal(door.knock('hello'), false)
 })
 
-test('should knock at multiple locks at a time', assert => {
+test('add locks from constructor and knock locks', assert => {
   assert.plan(3)
   var door = doors('hello world foo')
   assert.equal(door.knock('world hello'), false)
@@ -116,7 +116,7 @@ test('should knock at multiple locks at a time', assert => {
   assert.equal(door.knock('hello foo'), false)
 })
 
-test('should mix constructor locks and added locks', assert => {
+test('lock, unlock and knock', assert => {
   assert.plan(5)
   var door = doors('hello world foo')
   door.lock('beep')
@@ -130,7 +130,7 @@ test('should mix constructor locks and added locks', assert => {
   assert.equal(door.knock('world'), true)
 })
 
-test('should accept arrays of locks', assert => {
+test('add locks from array', assert => {
   assert.plan(2)
   var door = doors(['hello', 'world'])
   door.unlock(['hello', 'world'])
@@ -139,7 +139,7 @@ test('should accept arrays of locks', assert => {
   assert.equal(door.knock(['boop', 'beep']), false)
 })
 
-test('should emit lock event when lock is added', assert => {
+test('emit lock event when lock', assert => {
   assert.plan(2)
   var door = doors()
   door.on('lock', name => assert.equal(name, 'hello'))
@@ -147,7 +147,7 @@ test('should emit lock event when lock is added', assert => {
   door.lock('hello')
 })
 
-test('should emit multiple time the lock event', assert => {
+test('emit lock events when locks', assert => {
   assert.plan(4)
   var door = doors()
   const locks = ['hello', 'world']
@@ -159,7 +159,7 @@ test('should emit multiple time the lock event', assert => {
   door.lock(locks)
 })
 
-test('should not emit lock event if lock has already been added', assert => {
+test('does not emit lock event if already locked', assert => {
   assert.plan(1)
   var door = doors('hello')
   door.on('lock hello', () => assert.fail('fail'))
@@ -167,7 +167,7 @@ test('should not emit lock event if lock has already been added', assert => {
   assert.ok('pass')
 })
 
-test('should emit unlock event when lock is unlocked', assert => {
+test('does not emit unlock event if lock unknown', assert => {
   assert.plan(2)
   var door = doors('hello')
   door.on('unlock', name => assert.equal(name, 'hello'))
@@ -175,7 +175,7 @@ test('should emit unlock event when lock is unlocked', assert => {
   door.unlock('hello')
 })
 
-test('should not emit unlock event if lock is not locked prior', assert => {
+test('does not emit unlock event if lock alerady unlocked', assert => {
   assert.plan(1)
   var door = doors()
   door.on('unlock', name => assert.fail('should not be received'))
@@ -183,14 +183,14 @@ test('should not emit unlock event if lock is not locked prior', assert => {
   assert.ok('end')
 })
 
-test('should emit open event when door is openned', assert => {
+test('emit open event when no locks', assert => {
   assert.plan(1)
   var door = doors('hello')
   door.on('open', () => assert.ok('open'))
   door.unlock('hello')
 })
 
-test('should emit open event once when door is openned', assert => {
+test('emit open event only if door closed prior', assert => {
   assert.plan(1)
   var door = doors('hello')
   door.on('open', () => assert.ok('open'))
@@ -198,14 +198,14 @@ test('should emit open event once when door is openned', assert => {
   door.unlock('hello')
 })
 
-test('should emit close event when door is locked', assert => {
+test('emit close event when lock', assert => {
   assert.plan(1)
   var door = doors()
   door.on('close', () => assert.ok('close'))
   door.lock('hello')
 })
 
-test('should emit close event once when door is locked', assert => {
+test('emit close event only if door openned prior', assert => {
   assert.plan(1)
   var door = doors()
   door.on('close', () => assert.ok('close'))
@@ -213,7 +213,7 @@ test('should emit close event once when door is locked', assert => {
   door.lock('hello')
 })
 
-test('should emit open and close event back and forth', assert => {
+test('emit open and close event', assert => {
   assert.plan(1)
   var door = doors()
   door.on('open', () => assert.ok('open once'))
@@ -224,7 +224,7 @@ test('should emit open and close event back and forth', assert => {
   door.unlock('open')
 })
 
-test('should reject promise when door opens', assert => {
+test('reject promise if door closed prior', assert => {
   assert.plan(1)
   var door = doors('hello')
   door.promise().then(() => assert.ok('open'), () => assert.fail('close'))
