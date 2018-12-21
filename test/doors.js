@@ -260,11 +260,20 @@ test('unlocks and resolve promise', assert => {
   door.unlock('beep')
 })
 
-
 test('locks and reject promise', assert => {
   assert.plan(1)
   var door = doors()
   door.promise('hello beep').then(() => assert.fail('unlock'), () => assert.ok('lock'))
   door.lock('hello world')
   door.lock('beep')
+})
+
+test('close and reject promise', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.lock('hello')
+  door.unlock('hello')
+  door.promise().then(() => assert.fail('open'), () => assert.ok('close'))
+  door.unlock('hello')
+  door.lock('hello')
 })
