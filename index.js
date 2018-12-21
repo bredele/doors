@@ -137,14 +137,8 @@ module.exports = function (arg) {
    */
 
   door.lock = function (names, promise) {
-    var add = function () {
-      split(names).map(function (name) {
-        door.add(name)
-      })
-    }
-    return promise
-      ? promise.then(add)
-      : add()
+    var add = map(names, door.add)
+    return promise ? promise.then(add) : add()
   }
 
   /**
@@ -162,15 +156,8 @@ module.exports = function (arg) {
    */
 
   door.unlock = function (names, promise) {
-    var remove = function () {
-      split(names).map(function (name) {
-        door.remove(name)
-      })
-    }
-
-    return promise
-      ? promise.then(remove)
-      : remove()
+    var remove = map(names, door.remove)
+    return promise ? promise.then(remove) : remove()
   }
 
   /**
@@ -198,4 +185,19 @@ function split (names) {
   return names instanceof Array
     ? names
     : names.trim().split(/\s+/g)
+}
+
+/**
+ * Map function with names input.
+ *
+ * @param {String|Array} names
+ * @param {Function} fn
+ * @return {Function}
+ * @api private
+ */
+
+function map (names, fn) {
+  return function () {
+    split(names).map(fn)
+  }
 }
