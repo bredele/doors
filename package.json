@@ -1,6 +1,6 @@
 {
   "name": "doors",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Door asynchronous pattern",
   "main": "index.js",
   "directories": {
@@ -16,10 +16,12 @@
   },
   "keywords": [
     "asynchronous",
-    "promises",
+    "async",
+    "promise",
     "states",
     "locks",
-    "doors"
+    "doors",
+    "door",
   ],
   "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
   "license": "MIT",
