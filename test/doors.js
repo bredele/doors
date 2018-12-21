@@ -244,3 +244,18 @@ test('unlock and resolve promise', assert => {
   door.promise('hello').then(() => assert.ok('unlock'), () => assert.fail('lock'))
   door.unlock('hello')
 })
+
+test('lock and reject promise', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.promise('hello').then(() => assert.fail('unlock'), () => assert.ok('lock'))
+  door.lock('hello')
+})
+
+test('unlocks and resolve promise', assert => {
+  assert.plan(1)
+  var door = doors('hello world beep')
+  door.promise('hello beep').then(() => assert.ok('unlock'), () => assert.fail('lock'))
+  door.unlock('hello')
+  door.unlock('beep')
+})
