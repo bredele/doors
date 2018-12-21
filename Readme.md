@@ -8,6 +8,8 @@
 
 Use door to represent asynchronous operation depending on multiple conditions. Imagine a door with multiple locks, you can not open the door until all locks are unlocked and one lock is enough for the door to be closed.
 
+[Check it out online!](http://bredele.github.io/doors)
+
 ## Usage
 
 A door is either opened or closed. The transition from one state to an other is not immutable and depends on conditions called "locks".
