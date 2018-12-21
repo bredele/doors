@@ -59,7 +59,11 @@ module.exports = function (arg) {
 
   door.remove = function (name) {
     var index = locks.indexOf(name)
-    if (index > -1) locks.splice(index, 1)
+    if (index > -1) {
+      locks.splice(index, 1)
+      door.emit('unlock ' + name)
+      door.emit('unlock', name)
+    }
   }
 
   door.lock = function (names) {
@@ -72,8 +76,6 @@ module.exports = function (arg) {
 
   door.unlock = function (names) {
     split(names).map(function (name) {
-      door.emit('unlock ' + name)
-      door.emit('unlock', name)
       door.remove(name)
     })
   }

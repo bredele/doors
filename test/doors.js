@@ -166,3 +166,11 @@ test('should emit unlock event when lock is unlocked', assert => {
   door.on('unlock hello', () => assert.ok('event received'))
   door.unlock('hello')
 })
+
+test('should not emit unlock event if lock is not locked prior', assert => {
+  assert.plan(1)
+  var door = doors()
+  door.on('unlock', name => assert.fail('should not be received'))
+  door.unlock('hello')
+  assert.ok('end')
+})
