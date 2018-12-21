@@ -11,7 +11,27 @@ module.exports = function (arg) {
 
   var locks = []
 
-  door.knock = function (name) {
+  /**
+   * Check if door is locked (true) or unlocked (false).
+   * Check if lock is locked or not.
+   *
+   * Examples:
+   *
+   *  knock()
+   *  knock('lock1')
+   *  knock('lock1 lock2')
+   *
+   * @param {String?} names
+   * @return {Boolean}
+   * @api public
+   */
+
+  door.knock = function (names) {
+    if (names) {
+      return split(names).reduce(function (a, b) {
+        return !~locks.indexOf(b) && a
+      }, true)
+    }
     return locks.length < 1
   }
 
@@ -19,9 +39,23 @@ module.exports = function (arg) {
 
   }
 
+  /**
+   * Add lock.
+   *
+   * @param {String} name
+   * @api private
+   */
+
   door.add = function (name) {
     if (!~locks.indexOf(name)) locks.push(name)
   }
+
+  /**
+   * Remove lock.
+   *
+   * @param {String} name
+   * @api private
+   */
 
   door.remove = function (name) {
     var index = locks.indexOf(name)
@@ -49,7 +83,16 @@ module.exports = function (arg) {
   return door
 }
 
+/**
+ * Split string into array of words without spaces.
+ *
+ * @param {String|Array} names
+ * @return {Array}
+ * @api private
+ */
 
 function split (names) {
-  return names.trim().split(/\s+/g)
+  return names instanceof Array
+    ? names
+    : names.trim().split(/\s+/g)
 }
