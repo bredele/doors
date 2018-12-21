@@ -288,3 +288,14 @@ test('open and resolve promise', assert => {
   door.lock('hello')
   assert.ok('open')
 })
+
+test('unlock on promise resolve', assert => {
+  assert.plan(2)
+  var door = doors('lock1')
+  var promise = new Promise(resolve => {
+    setTimeout(resolve, 500)
+  })
+  door.unlock('lock1', promise)
+  assert.equal(door.knock(), false)
+  promise.then(() => assert.equal(door.knock(), true))
+})

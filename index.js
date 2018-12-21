@@ -4,10 +4,30 @@
 
 var emitter = require('component-emitter')
 
+/**
+ * Door constructor.
+ *
+ * Examples:
+ *
+ *  door()
+ *  door('lock1')
+ *  door('lock1 lock2')
+ *  door(['lock1', 'lock2'])
+ *
+ *
+ * @param {String|Array?}
+ * @return {Object}
+ * @api public
+ */
 
 module.exports = function (arg) {
 
   var door = emitter({})
+
+  /**
+   * List of locks that are locked.
+   * @type {Array}
+   */
 
   var locks = []
 
@@ -20,6 +40,7 @@ module.exports = function (arg) {
    *  knock()
    *  knock('lock1')
    *  knock('lock1 lock2')
+   *  knock(['lock1', 'lock2'])
    *
    * @param {String?} names
    * @return {Boolean}
@@ -34,6 +55,23 @@ module.exports = function (arg) {
     }
     return locks.length < 1
   }
+
+  /**
+   * Promise factory.
+   * Resolve promise when open and reject when close.
+   * Resolve promise when lock and reject when unlock.
+   *
+   * Examples:
+   *
+   *  promise()
+   *  promise('lock1')
+   *  promise('lock2 lock1')
+   *  promise(['lock1', 'lock2'])
+   *
+   * @param {String|Array?}
+   * @return {Promise}
+   * @api public
+   */
 
   door.promise = function (names) {
     if (names) {
@@ -85,17 +123,54 @@ module.exports = function (arg) {
     }
   }
 
+  /**
+   * Lock one or multiple locks.
+   *
+   * Examples:
+   *
+   *  lock('lock1')
+   *  lock('lock1 lock2')
+   *  lock(['lock1', 'lock2'])
+   *
+   * @param {String?} names
+   * @api public
+   */
+
   door.lock = function (names) {
     split(names).map(function (name) {
       door.add(name)
     })
   }
 
-  door.unlock = function (names) {
-    split(names).map(function (name) {
-      door.remove(name)
-    })
+  /**
+   * Unlock one or multiple locks.
+   *
+   * Examples:
+   *
+   *  unlock('lock1')
+   *  unlock('lock1 lock2')
+   *  unlock(['lock1', 'lock2'])
+   *
+   * @param {String?} names
+   * @param {Promise?} promise
+   * @api public
+   */
+
+  door.unlock = function (names, promise) {
+    var remove = function () {
+      split(names).map(function (name) {
+        door.remove(name)
+      })
+    }
+
+    return promise
+      ? promise.then(remove)
+      : remove()
   }
+
+  /**
+   * Add locks on construction.
+   */
 
   if (arg) {
     split(arg).map(function (name) {
