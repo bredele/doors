@@ -79,6 +79,13 @@ test('door should be locked if locks have been added from the constructor', asse
   assert.equal(door.knock(), false)
 })
 
+
+test('should add multiple locks from the constructor', assert => {
+  assert.plan(2)
+  var door = doors('hello world')
+  assert.equal(door.knock('world'), false)
+  assert.equal(door.knock('hello'), false)
+})
 // test('knock should return true if lock is closed', assert => {
 //   assert.plan(1)
 //   var door = doors()
