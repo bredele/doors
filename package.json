@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "tape test/*.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "indexof": "0.0.1"
   },
   "devDependencies": {
-    "mocha": "~1.17.1"
+    "mocha": "~1.17.1",
+    "tape": "^4.9.1"
   }
 }
