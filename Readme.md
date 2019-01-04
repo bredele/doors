@@ -1,9 +1,14 @@
-# doors
 
-[![Build Status](https://travis-ci.org/bredele/doors.svg?branch=master)](https://travis-ci.org/bredele/doors)
- [![NPM](https://img.shields.io/npm/v/doors.svg)](https://www.npmjs.com/package/doors)
- [![Downloads](https://img.shields.io/npm/dm/doors.svg)](http://npm-stat.com/charts.html?package=doors)
- [![pledge](https://bredele.github.io/contributing-guide/community-pledge.svg)](https://github.com/bredele/contributing-guide/blob/master/guidelines.md)
+<p align="center">
+  <img src="https://github.com/bredele/doors/blob/master/doors.png" width="200" height="200" alt="mitt">
+  <br>
+  <a href="https://www.npmjs.org/package/doors"><img src="https://img.shields.io/npm/v/doors.svg?style=flat" alt="npm"></a>
+  <a href="https://travis-ci.org/bredele/doors"><img src="https://travis-ci.org/bredele/doors.svg?branch=master" alt="travis"></a>
+  <a href="https://david-dm.org/bredele/doors"><img src="https://david-dm.org/bredele/doors/status.svg" alt="dependencies Status"></a>
+  <a href='https://github.com/bredele/contributing-guide/blob/master/guidelines.m'><img src="https://bredele.github.io/contributing-guide/community-pledge.svg"></a>
+</p>
+
+# doors
 
 Use doors to represent asynchronous operations depending on multiple conditions. Imagine a door with multiple locks, you can not open the door until all locks are unlocked and one lock is enough for the door to be closed.
 
@@ -25,7 +30,7 @@ const promise = new Doors(door => {
 }, 'hello world')
 ```
 
-At the opposite of a promise, the transition from open to close is not immutable (see below) and a door can oscillate between those 2 states. For example, this module has been used in production to represent database connection hang up with automatic retry. 
+At the opposite of a promise, the transition from open to close is not immutable (see below) and a door can oscillate between those 2 states. For example, this module has been used in production to represent database connection hang up with automatic retry.
 
 ## Api
 
