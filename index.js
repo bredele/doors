@@ -2,7 +2,7 @@
  * Dependency
  */
 
-var emitter = require('component-emitter')
+var emitter = require('zeroin')
 
 /**
  * Door factory.

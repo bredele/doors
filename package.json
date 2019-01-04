@@ -1,6 +1,6 @@
 {
   "name": "doors",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Door asynchronous pattern",
   "main": "index.js",
   "engines": {
@@ -28,11 +28,9 @@
     "url": "https://github.com/bredele/doors/issues"
   },
   "dependencies": {
-    "component-emitter": "^1.2.1",
-    "indexof": "0.0.1"
+    "zeroin": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "~1.17.1",
     "tape": "^4.9.1"
   }
 }
