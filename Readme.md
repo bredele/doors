@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/bredele/doors/blob/master/doors.png" width="200" height="200" alt="mitt">
+  <img src="https://github.com/bredele/doors/blob/master/doors.png" width="325" height="260" alt="mitt">
   <br>
   <a href="https://www.npmjs.org/package/doors"><img src="https://img.shields.io/npm/v/doors.svg?style=flat" alt="npm"></a>
   <a href="https://travis-ci.org/bredele/doors"><img src="https://travis-ci.org/bredele/doors.svg?branch=master" alt="travis"></a>
