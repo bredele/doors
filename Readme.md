@@ -5,7 +5,7 @@
  [![Downloads](https://img.shields.io/npm/dm/doors.svg)](http://npm-stat.com/charts.html?package=doors)
  [![pledge](https://bredele.github.io/contributing-guide/community-pledge.svg)](https://github.com/bredele/contributing-guide/blob/master/guidelines.md)
 
-Use door to represent asynchronous operations depending on multiple conditions. Imagine a door with multiple locks, you can not open the door until all locks are unlocked and one lock is enough for the door to be closed.
+Use doors to represent asynchronous operations depending on multiple conditions. Imagine a door with multiple locks, you can not open the door until all locks are unlocked and one lock is enough for the door to be closed.
 
 [Check it out online!](http://bredele.github.io/doors)
 
